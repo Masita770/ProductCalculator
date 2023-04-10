@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserMapper">
+    <select id="selectAll" resultType="com.example.domain.User">
+        SELECT id FROM users
+    </select>
+    <select id="selectOne" resultType="com.example.domain.User">
+        SELECT id, username, password FROM users WHERE id = #{id}
+    </select>
+    <insert id="add" useGeneratedKeys="true">
+        INSERT into users (username,password) values (#{username},#{password})
+    </insert>
+    <update id="update">
+        UPDATE users set username = #{username}, password = #{password} where id = #{id}
+    </update>
+    <delete id="delete">
+        DELETE FROM users WHERE id = (#{id},#{username},{password})
+    </delete>
+</mapper>
