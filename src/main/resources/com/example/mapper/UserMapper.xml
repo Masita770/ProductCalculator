@@ -10,7 +10,7 @@
         SELECT id, username, password FROM users WHERE id = #{id}
     </select>
     <insert id="add" useGeneratedKeys="true">
-        INSERT into users (username,password) values (#{username},#{password})
+        INSERT into users (id,username,password) values (#{id},#{username},#{password})
     </insert>
     <update id="update">
         UPDATE users set username = #{username}, password = #{password} where id = #{id}
