@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>user home</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>UserHome</h1>
+    <div th:object="${user}">
+        <div class="form-row">
+            <label class="control-label">ID: </label>
+            <p class="form-control" th:text="*{id}"></p>
+        </div>
+        <div class="form-row">
+            <label class="control-label">名前</label>
+            <p class="form-control" th:text="*{username}"></p>
+        </div>
+        <div class="form-row">
+            <label class="control-label">年齢</label>
+            <p class="form-control" th:text="*{password}"></p>
+        </div>
+        <a class="btn btn-outline-success btn-sm" th:href="@{/user/update/{id}(id=*{id})}">編集</a>
+        <a class="btn btn-outline-success btn-sm" th:href="@{/user/deletePause/{id}(id=*{id})}">削除</a>
+        　　			</div>
+</div>
+</div>
+<div id="righttext">
+    <a class="btn btn-link" id ="linktext" href="/user/list">一覧画面</a>
+</body>
+</html>
