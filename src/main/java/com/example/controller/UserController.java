@@ -31,11 +31,8 @@ public class UserController {
     @GetMapping("user/{id}")
     public String user(@PathVariable("id") Long id, Model model) throws NotFoundException {
         Optional<User> user = service.getListOne(id);
-        user.ifPresentOrElse(inside -> {
-            model.addAttribute("user", inside);
-        }, () -> {
-            model.addAttribute("user", user);
-        });
+        user.ifPresentOrElse(inside -> model.addAttribute("user", inside), () ->
+                model.addAttribute("user", user));
         return "user/user";
     }
 
@@ -50,7 +47,7 @@ public class UserController {
             List<User> users = service.getAll();
             model.addAttribute("newUser", users);
             //service.create(user);
-            return "edit";
+            return "user/edit";
         }
         service.create(user);
         return "redirect:edit";

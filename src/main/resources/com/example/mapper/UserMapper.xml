@@ -9,8 +9,8 @@
     <select id="selectOne" resultType="com.example.domain.User">
         SELECT id, username, password FROM users WHERE id = #{id}
     </select>
-    <insert id="add" useGeneratedKeys="true">
-        INSERT into users (id,username,password) values (#{id},#{username},#{password})
+    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+        INSERT into users (username,password) values (#{username},#{password})
     </insert>
     <update id="update">
         UPDATE users set username = #{username}, password = #{password} where id = #{id}
