@@ -41,16 +41,16 @@ public class UserController {
     String newUser(@RequestBody(required = false) Model model) {
         return "user/form";
     }
-    @RequestMapping("edit")
+    @PostMapping("edit")
     public String add(@ModelAttribute User user, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
-            List<User> users = service.getAll();
-            model.addAttribute("newUser", users);
+//            List<User> users = service.getAll();
+//            model.addAttribute("newUser", users);
             //service.create(user);
             return "user/edit";
         }
         service.create(user);
-        return "redirect:edit";
+        return "redirect:list";
     }
 
     @GetMapping("update/{id}")

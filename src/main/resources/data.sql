@@ -1,9 +1,9 @@
-INSERT INTO users(
+/*INSERT INTO users(
     id,
     username,
     password
     ) VALUES (
-    2,
+    31,
     'nakazima',
     3324
-    );
+    );*/
