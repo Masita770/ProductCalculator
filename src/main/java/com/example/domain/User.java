@@ -1,10 +1,18 @@
 package com.example.domain;
 
+
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+
+@AllArgsConstructor
 public class User {
 
     private Long id;
     private String username;
     private String password;
+
+
+
 
     public long getId() {
         return id;
