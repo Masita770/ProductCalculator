@@ -12,7 +12,7 @@ import com.example.domain.User;
 public interface UserMapper {
 
     //全表示（Read処理)
-    //@Select("SELECT * FROM users ")
+    @Select("SELECT * FROM users ")
     List<User> selectAll();
 
     //一件表示
