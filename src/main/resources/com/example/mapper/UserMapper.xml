@@ -16,6 +16,6 @@
         UPDATE users set username = #{username}, password = #{password} where id = #{id}
     </update>
     <delete id="delete">
-        DELETE FROM users WHERE id = (#{id},#{username},{password})
+        DELETE FROM users WHERE id = #{id}
     </delete>
 </mapper>

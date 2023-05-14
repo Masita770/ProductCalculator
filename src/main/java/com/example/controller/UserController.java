@@ -82,6 +82,6 @@ public class UserController {
     @GetMapping("delete/{id}")
     public String delete(@ModelAttribute User delete) {
         service.delete(delete);
-        return "/user/delete";
+        return "user/delete";
     }
 }
