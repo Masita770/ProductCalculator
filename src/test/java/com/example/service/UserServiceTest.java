@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -54,18 +55,11 @@ class UserServiceTest {
         verify(mapper).add(newUser);
     }
 
-//    @Test
-//    void selectAllTest() {
-//        List<User> users = mapper.selectAll();
-//        int count = users.size();
-//        assertAll("ユーザー情報取得",
-//                () -> assertEquals("test01",users.get(0).getId(), "id一致"),
-//                () -> assertEquals("テスト1", users.get(0).getUsername(), "名前一致"),
-//                () -> assertEquals("test", users.get(0).getPassword(), "パスワード一致"),
-//                () -> assertEquals(35, count, "取得件数")
-//        );
-//        List<User> users = service.getAll();
-//        assertEquals(5L, users.size());
-//        verify(mapper, times(1)).selectAll();
-//    }
+    @Test
+    void getListOne() {
+        Mockito.doReturn(Optional.of(new User(1L, "takahashi", "33424"))).when(mapper).selectOne(1L);
+        Optional<User> userTest = service.getListOne(1L);
+        Assertions.assertThat(userTest).isEqualTo(
+                new User(1L, "takahashi", "33424"));
+    }
 }
