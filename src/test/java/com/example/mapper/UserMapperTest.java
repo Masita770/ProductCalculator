@@ -40,7 +40,7 @@ class UserMapperTest {
     }
 
     private User createUsers() {
-        User user = new User();
+        User user = new User(1L, "yamashita", "33282");
         user.setId(1L);
         user.setUsername("yamashita");
         user.setPassword("33282");
