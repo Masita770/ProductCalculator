@@ -9,6 +9,11 @@ import java.util.Objects;
 @AllArgsConstructor
 public class User {
 
+    private Long id;
+    private String username;
+    private String password;
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -20,10 +25,6 @@ public class User {
         User user = (User) o;
         return Objects.equals(id, user.id);
     }
-
-    private Long id;
-    private String username;
-    private String password;
 
     public User() {
 
