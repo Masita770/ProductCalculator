@@ -2,7 +2,6 @@ package com.example.domain;
 
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Objects;
 
@@ -26,9 +25,12 @@ public class User {
         return Objects.equals(id, user.id);
     }
 
-    public User() {
-
+    @Override
+    public int hashCode() {
+        return Long.hashCode(id);
     }
+
+
 
 
     public long getId() {
