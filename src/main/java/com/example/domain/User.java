@@ -14,20 +14,20 @@ public class User {
 
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object object) {
+        if (this == object) {
             return true;
         }
-        if (!(o instanceof User))
+        if (!(object instanceof User))
             return false;
 
-        User user = (User) o;
+        User user = (User) object;
         return Objects.equals(id, user.id);
     }
 
     @Override
     public int hashCode() {
-        return Long.hashCode(id);
+        return Long.hashCode(this.id);
     }
 
 
