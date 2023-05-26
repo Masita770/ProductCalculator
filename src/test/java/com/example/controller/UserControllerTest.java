@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import org.mockito.ArgumentMatchers;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -32,6 +33,9 @@ class UserControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Mock
+    User user;
 
     @MockBean
     private UserService service;
@@ -67,9 +71,11 @@ class UserControllerTest {
 
     @Test
     void 一件検索() throws Exception{
+        Mockito.when(user.getId()).thenReturn(1L);
+//                Mockito.when(service.getListOne(1L)).thenReturn(user);
         mockMvc.perform(MockMvcRequestBuilders.get("/user/user"))
                 .andExpect(MockMvcResultMatchers.model()
-                        .attribute("user", Matchers.hasItem(Matchers.hasProperty("id", Matchers.is(1)))));
+                        .attribute("kobayashi", Matchers.hasItem(Matchers.hasProperty("id", Matchers.is(1)))));
 
     }
 }

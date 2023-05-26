@@ -12,25 +12,17 @@ public class User {
     private String username;
     private String password;
 
-
     @Override
-    public boolean equals(Object object) {
-        if (this == object) {
-            return true;
-        }
-        if (!(object instanceof User))
-            return false;
-
-        User user = (User) object;
-        return Objects.equals(id, user.id);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User user)) return false;
+        return id.equals(user.id);
     }
 
     @Override
     public int hashCode() {
-        return Long.hashCode(this.id);
+        return Objects.hash(id);
     }
-
-
 
 
     public long getId() {
