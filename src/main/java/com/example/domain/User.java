@@ -16,14 +16,14 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User user)) return false;
-        return id.equals(user.id);
+        return id.equals(user.id) && username.equals(user.username) && password.equals(user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, username, password);
     }
-
+    
 
     public long getId() {
         return id;
