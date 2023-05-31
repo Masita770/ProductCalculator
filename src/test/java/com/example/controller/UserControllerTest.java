@@ -16,21 +16,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import java.util.Optional;
+
+import static org.hamcrest.Matchers.is;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
 @AutoConfigureMockMvc
 //@Profile("UserControllerTest")
-@WebMvcTest
+@WebMvcTest(value = UserController.class)
 class UserControllerTest {
 
 
@@ -58,6 +63,7 @@ class UserControllerTest {
     void listTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/user/list"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(model().attributeExists("list"))
                 .andExpect(MockMvcResultMatchers.view().name("user/list"))
                 .andReturn();
     }
@@ -84,27 +90,65 @@ class UserControllerTest {
     @Test
     @WithMockUser
     void getListOneTest() throws Exception{
-        Long id = 1L;
-        String username = "yamahashi";
-        String password = "88979";
+//        User user1 = new User(1L, "nakazima,", "333432");
+//        Long id = 1L;
+//        Optional<User> user = Optional.of(new User(1L, "takahashi", "33343"));
+        // Optionalの値が存在しないとHTML側の方でエラーが引っかかる
+        Mockito.when(service.getListOne(Mockito.anyLong())).thenReturn(Optional.of(
+                new User(1L, "takayama", "4422244")));
 
-//        Mockito.when(service.getListOne(id)).thenReturn();
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/user",1)
-                .with(SecurityMockMvcRequestPostProcessors.csrf()))
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/user/1").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(model().attributeDoesNotExist("user/user"))
+//                .andExpect(model().attributeDoesNotExist("user"))
                 .andExpect(model().attributeExists("user"))
                 .andExpect(model().attributeDoesNotExist())
-//                .andExpect(content().json(service.getListOne(new User(id))))
-                .andExpect(MockMvcResultMatchers.view().name("user/user"));
+                .andExpect(MockMvcResultMatchers.view().name("user/user"))
+                .andReturn();
     }
+
+    @Test
+    public void 権限無し() throws Exception {
+        Integer id = 1;
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", id))
+                .andExpect(status().is3xxRedirection());
+    }
+
+//    @Test
+//    @WithMockUser
+//    void 詳細検索() throws Exception {
+////        User user = new User();
+////        user.setId(1L);
+////        user.setUsername("yamashita");
+////        user.setPassword("33543");
+//        Optional<User> user = Optional.of(new User(1L, "takahashi", "33343"));
+//
+//        mockMvc.perform(MockMvcRequestBuilders.get("/user/user", 1))
+//                .andExpect(status().isOk());
+//        mockMvc.perform(MockMvcRequestBuilders.get("/user/1")
+//                .contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("username", is(user.equals())));
+//    }
 
     @Test
     @WithMockUser
     void updateTest() throws Exception {
+        Mockito.when(service.getListOne(Mockito.anyLong())).thenReturn(Optional.of(
+                new User(1L, "tukishima", "443244")));
         mockMvc.perform(MockMvcRequestBuilders.get("/user/update/1"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(model().attributeExists("userUpdate"))
                 .andExpect(MockMvcResultMatchers.view().name("user/update"))
                 .andReturn();
     }
+
+//    public User testData() {
+//        Optional<User> user1 = new Optional<User> User();
+//
+//        user.setId(1L);
+//        user.setUsername("kobayashi");
+//        user.setPassword("333422");
+//        return user1;
+//    }
+
 }
