@@ -84,18 +84,15 @@ class UserControllerTest {
     @Test
     @WithMockUser
     void getListOneTest() throws Exception{
-        Long id = 1L;
-        String username = "yamahashi";
-        String password = "88979";
+//        Long id = 1L;
+//        String username = "yamahashi";
+//        String password = "88979";
 
-//        Mockito.when(service.getListOne(id)).thenReturn();
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/user",1)
-                .with(SecurityMockMvcRequestPostProcessors.csrf()))
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/user",1))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(model().attributeDoesNotExist("user/user"))
                 .andExpect(model().attributeExists("user"))
                 .andExpect(model().attributeDoesNotExist())
-//                .andExpect(content().json(service.getListOne(new User(id))))
                 .andExpect(MockMvcResultMatchers.view().name("user/user"));
     }
 
