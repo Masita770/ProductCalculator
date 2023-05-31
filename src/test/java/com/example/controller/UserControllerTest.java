@@ -11,10 +11,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import org.mockito.ArgumentMatchers;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
+import org.mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -27,6 +24,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 
@@ -47,6 +45,12 @@ class UserControllerTest {
 
     @InjectMocks
     UserController controller;
+
+//    @BeforeEach
+//    private void setup() {
+//        MockitoAnnotations.openMocks(this);
+//        this.id = 5;
+//    }
 
 
     @Test
@@ -78,16 +82,29 @@ class UserControllerTest {
     }
 
     @Test
-    void 一件検索() throws Exception{
-//        Mockito.when(user.getId()).thenReturn(1L, "kobayashi", "333424");
-//                Mockito.when(service.getListOne(1L)).thenReturn(user);
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/user/{id}", 1L))
-                .with(user("user").roles("user")
-                .andExpect(MockMvcResultMatchers.status().isNoContent()));
-//                .andExpect(MockMvcResultMatchers.model()
-////                        .attribute("user", Matchers.hasItem(1L, "kobayashi", "33323")));
-//                        .attribute("user", User(1L, "kobayashi", "33324"));
-//                .andExpect(MockMvcResultMatchers.status().isFound())
-//                .andExpect(model().attribute("user", (1L, "yamashita", "224442")));
+    @WithMockUser
+    void getListOneTest() throws Exception{
+        Long id = 1L;
+        String username = "yamahashi";
+        String password = "88979";
+
+//        Mockito.when(service.getListOne(id)).thenReturn();
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/user",1)
+                .with(SecurityMockMvcRequestPostProcessors.csrf()))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(model().attributeDoesNotExist("user/user"))
+                .andExpect(model().attributeExists("user"))
+                .andExpect(model().attributeDoesNotExist())
+//                .andExpect(content().json(service.getListOne(new User(id))))
+                .andExpect(MockMvcResultMatchers.view().name("user/user"));
+    }
+
+    @Test
+    @WithMockUser
+    void updateTest() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/update/1"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("user/update"))
+                .andReturn();
     }
 }

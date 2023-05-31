@@ -38,7 +38,7 @@ public class UserController {
 
 
     @GetMapping("form")
-    String newUser(@RequestBody(required = false) Model model) {
+    public String newUser(@RequestBody(required = false) Model model) {
         return "user/form";
     }
     @PostMapping("edit")
