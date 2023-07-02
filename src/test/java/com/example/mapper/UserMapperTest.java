@@ -62,4 +62,17 @@ class UserMapperTest {
         Assertions.assertThat(testUser1).isEqualTo(
                 Optional.of(new User(1L, "takahashi", "334532")));
     }
+
+    @Test
+    void updateTest() throws Exception {
+        User userUpdate = new User(1L, "yamazaki", "44424");
+        mapper.update(userUpdate);
+        System.out.println(userUpdate);
+    }
+
+    @Test
+    void deleteTest() {
+        User deleteUser = new User(1L, "yamazaki", "333243");
+        mapper.delete(deleteUser);
+    }
 }

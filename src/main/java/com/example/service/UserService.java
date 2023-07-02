@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.domain.User;
@@ -15,6 +16,9 @@ public class UserService {
     @Autowired
     UserMapper mapper;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     public List<User> getAll() {
         return mapper.selectAll();
     }
@@ -24,8 +28,16 @@ public class UserService {
         return mapper.selectOne(id);
     }
 
+    public Optional<User> selectName(String username) {
+        return mapper.selectName(username);
+    }
+
     //Insert処理
     public void create(User user) {
+        // 6/27 追加
+        User userInfo = new User();
+        userInfo.setUsername(user.getUsername());
+        userInfo.setPassword(passwordEncoder.encode(user.getPassword()));
         mapper.add(user);
     }
 

@@ -29,6 +29,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.is;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -90,9 +91,6 @@ class UserControllerTest {
     @Test
     @WithMockUser
     void getListOneTest() throws Exception{
-//        User user1 = new User(1L, "nakazima,", "333432");
-//        Long id = 1L;
-//        Optional<User> user = Optional.of(new User(1L, "takahashi", "33343"));
         // Optionalの値が存在しないとHTML側の方でエラーが引っかかる
         Mockito.when(service.getListOne(Mockito.anyLong())).thenReturn(Optional.of(
                 new User(1L, "takayama", "4422244")));
@@ -142,13 +140,27 @@ class UserControllerTest {
                 .andReturn();
     }
 
-//    public User testData() {
-//        Optional<User> user1 = new Optional<User> User();
-//
-//        user.setId(1L);
-//        user.setUsername("kobayashi");
-//        user.setPassword("333422");
-//        return user1;
-//    }
-
+    @Test
+    @WithMockUser
+    void deleteOneTest() throws Exception {
+        Mockito.when(service.getListOne(1L)).thenReturn(Optional.of(
+                new User(1L, "nakazma", "77699")));
+        mockMvc.perform(MockMvcRequestBuilders.post("/user/deletePause/1")
+                        .with(SecurityMockMvcRequestPostProcessors.csrf()))
+                        .andExpect(MockMvcResultMatchers.status().isOk())
+                        .andExpect(model().attributeExists("user"))
+                        .andExpect(MockMvcResultMatchers.view().name("/user/deletePause"))
+                        .andReturn();
+    }
+    @Test
+    void deleteTest() throws Exception{
+//        Mockito.when(service.delete(1L)).thenReturn(Optional.of(
+//                new User(1L, "takahashi", "333442")));
+       mockMvc.perform(MockMvcRequestBuilders.post("/user/delete/1")
+               .param("id", "1")
+               .with(csrf()))
+               .andExpect(MockMvcResultMatchers.status().isOk())
+               .andExpect(redirectedUrl("user/delete"))
+               .andExpect(MockMvcResultMatchers.view().name("user/delete"));
+    }
 }

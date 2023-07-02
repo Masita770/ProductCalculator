@@ -60,6 +60,24 @@ class UserServiceTest {
         Mockito.doReturn(Optional.of(new User(1L, "takahashi", "33424"))).when(mapper).selectOne(1L);
         Optional<User> userTest = service.getListOne(1L);
         Assertions.assertThat(userTest).isEqualTo(
-                new User(1L, "takahashi", "33424"));
+                Optional.of(new User(1L, "takahashi", "33424")));
+    }
+
+    @Test
+    void updateTest() {
+//        doReturn(Optional.of(new User(1L, "yamazaki", "33463")))
+//                .when(mapper).selectOne(1L);
+
+//        Optional<User> userUpdate = Optional.of(new User(1L, "nalabati", "33324"));
+        User userUpdate = new User(1L, "nakabati", "33324");
+        service.update( userUpdate);
+        verify(mapper).update(userUpdate);
+    }
+
+    @Test
+    void deleteTest() {
+        User deleteUser = new User(1L, "nakayama", "33344");
+        service.delete(deleteUser);
+        verify(mapper).delete(deleteUser);
     }
 }

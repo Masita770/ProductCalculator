@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.apache.ibatis.annotations.*;
 
 import com.example.domain.User;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
 @Mapper
@@ -18,6 +19,8 @@ public interface UserMapper {
     //一件表示
     //@Select("SELECT id, username, password FROM users WHERE id = #{id}")
     Optional<User> selectOne(Long id);
+
+    Optional<User> selectName(String username);
 
 
 
