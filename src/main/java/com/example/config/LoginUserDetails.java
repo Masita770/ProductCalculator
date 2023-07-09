@@ -8,12 +8,16 @@ import java.util.Collection;
 import java.util.Optional;
 
 public class LoginUserDetails implements UserDetails {
-
-    private Optional<User> user;
-
     public LoginUserDetails(Optional<User> user) {
-        this.user = user;
+
     }
+
+
+//    private Optional<User> user;
+
+//    public LoginUserDetails(Optional<User> user) {
+//        this.user = user;
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -22,12 +26,12 @@ public class LoginUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.user.get().getPassword();
+        return this.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return Integer.valueOf(getUsername()).toString();
+        return this.getUsername();
     }
 
     @Override

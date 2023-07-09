@@ -36,13 +36,13 @@ public class UserController {
         return "user/user";
     }
 
-    @GetMapping("user/{username}")
-    public String name(@PathVariable("username") String username, Model model) throws NotFoundException {
-        Optional<User> user = service.selectName(username);
-        user.ifPresentOrElse(inside -> model.addAttribute("user", inside), () ->
-                model.addAttribute("user", user));
-        return "user/user";
-    }
+//    @GetMapping("user/{username}")
+//    public String name(@PathVariable("username") String username, Model model) throws NotFoundException {
+//        Optional<User> user = service.selectName(username);
+//        user.ifPresentOrElse(inside -> model.addAttribute("username", inside), () ->
+//                model.addAttribute("username", user));
+//        return "user/user";
+//    }
 
 
     @GetMapping("form")

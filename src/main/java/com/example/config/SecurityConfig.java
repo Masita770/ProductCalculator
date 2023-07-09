@@ -23,8 +23,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableMethodSecurity
 public class SecurityConfig {
 
+
     @Autowired
-    UserDetailsService userDetailsService;
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(new LoginUserDetailsService());
+    }
+
 @Bean
 PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
@@ -38,7 +42,7 @@ PasswordEncoder passwordEncoder() {
                 .passwordParameter("password")
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/user/list", true)
+                .defaultSuccessUrl("/success", true)
                 .successForwardUrl("/user/list")
                 .failureUrl("/login?error")
                 .and()
