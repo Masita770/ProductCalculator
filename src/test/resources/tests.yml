@@ -1,4 +1,4 @@
-tests:
+users:
   - id: 1
     name: "山下"
     password: "33dd332"
