@@ -1,0 +1,10 @@
+tests:
+  - id: 1
+    name: "山下"
+    password: "33dd332"
+  - id: 2
+    name: "中島"
+    password: "ff33gff"
+  - id: 3
+    name: "安生"
+    password: "dd33452"
