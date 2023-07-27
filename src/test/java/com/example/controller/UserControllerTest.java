@@ -6,7 +6,6 @@ import com.example.service.UserService;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

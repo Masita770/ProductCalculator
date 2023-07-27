@@ -24,10 +24,12 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
 
 
-    @Autowired
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(new LoginUserDetailsService());
-    }
+//    @Autowired
+////    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//////        auth.userDetailsService(new LoginUserDetailsService());
+////        auth.userDetailsService()
+//    LoginUserDetailsService loginUserDetailsService;
+
 
 @Bean
 PasswordEncoder passwordEncoder() {
@@ -38,15 +40,15 @@ PasswordEncoder passwordEncoder() {
     //protected void configure(HttpSecurity http) throws Exception {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.formLogin(login -> login
-                .usernameParameter("username")
-                .passwordParameter("password")
-                .loginPage("/login")
+                .loginPage("/login").permitAll()
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/success", true)
-                .successForwardUrl("/user/list")
+                .defaultSuccessUrl("/list", true)
+//                .successForwardUrl("/user/list")
                 .failureUrl("/login?error")
+                        .usernameParameter("username")
+                        .passwordParameter("password")
                 .and()
-        ).logout(logout -> logout.logoutSuccessUrl("/login?logout")
+        ).logout(logout -> logout.logoutSuccessUrl("/login")
                 .permitAll()
         ).authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/", "/login").permitAll()

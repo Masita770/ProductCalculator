@@ -8,16 +8,11 @@ import java.util.Collection;
 import java.util.Optional;
 
 public class LoginUserDetails implements UserDetails {
-    public LoginUserDetails(Optional<User> user) {
+
+    public LoginUserDetails(User user) {
+        super();
 
     }
-
-
-//    private Optional<User> user;
-
-//    public LoginUserDetails(Optional<User> user) {
-//        this.user = user;
-//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

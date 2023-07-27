@@ -24,7 +24,8 @@ public class LoginController {
     }
 
     @PostMapping
-    String loginView(@Validated User user, Model model) {
+    String loginView() {
+//    String loginView(@Validated User user, Model model) {
 //        try {
 //            userDetailsService.register
 //        }

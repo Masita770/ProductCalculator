@@ -3,7 +3,7 @@ package com.example.mapper;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.annotations.Mapper;
 
 import com.example.domain.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,8 +19,7 @@ public interface UserMapper {
     //一件表示
     //@Select("SELECT id, username, password FROM users WHERE id = #{id}")
     Optional<User> selectOne(Long id);
-
-    Optional<User> selectName(String username);
+    User selectName(String username);
 
 
 

@@ -2,20 +2,29 @@ package com.example.mapper;
 
 import com.example.domain.User;
 import com.example.service.UserService;
-import org.assertj.core.api.Assertions;
+import com.github.database.rider.core.api.dataset.DataSet;
+import com.github.database.rider.core.api.dataset.ExpectedDataSet;
+import com.github.database.rider.spring.api.DBRider;
+import org.assertj.core.api.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 
+@DBRider
 @ExtendWith(SpringExtension.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @MybatisTest
@@ -24,19 +33,37 @@ class UserMapperTest {
     @InjectMocks
     UserService service;
 
-    @Mock
+//    @Mock
+    @Autowired
     UserMapper mapper;
-    List testUsers = List.of(
-            new User(1L, "yamashita", "3344"));
-    User user = new User(1L, "takahashi", "334532");
+//    List testUsers = List.of(
+//            new User(1L, "yamashita", "3344"));
+//    User user = new User(1L, "takahashi", "334532");
 
 
     @Test
+//    @DataSet("dbunit.yml")
+//    @ExpectedDataSet("test.yml")
+    @DataSet(cleanAfter = true)
+    @ExpectedDataSet(value = "tests.yml")
+//    @DataSet("test.yml")
+//    @ExpectedDataSet("tests-expected.yml")
+//    @Sql(scripts = {"classpath:/selectAll-test.sql"},
+//            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    @Transactional
     void selectAllTest() {
+        List<User> users = mapper.selectAll();
+        org.assertj.core.api.Assertions.assertThat(users)
+                .hasSize(3)
+                .contains(
+                        new User(1L, "山下", "444224"),
+                        new User(2L, "高橋", "22h5535"),
+                        new User(3L, "安生", "4442jfet")
+                );
 //        List<User> users = mapper.selectAll();
-        Mockito.doReturn(testUsers).when(mapper).selectAll();
-        List<User> testUser = service.getAll();
-        assertEquals(1,testUser.size());
+//        Mockito.doReturn(testUsers).when(mapper).selectAll();
+//        List<User> testUser = service.getAll();
+//        assertEquals(1,testUser.size());
     }
 
     private User createUsers() {
@@ -56,11 +83,11 @@ class UserMapperTest {
 
     @Test
     void selectOneTest() throws Exception {
-        Mockito.doReturn(Optional.of(user)).when(mapper).selectOne(1L);
-        Optional<User> testUser1 = service.getListOne(1L);
-        //Optional<User> user = mapper.selectOne(1L);
-        Assertions.assertThat(testUser1).isEqualTo(
-                Optional.of(new User(1L, "takahashi", "334532")));
+//        Mockito.doReturn(Optional.of(user)).when(mapper).selectOne(1L);
+//        Optional<User> testUser1 = service.getListOne(1L);
+//        //Optional<User> user = mapper.selectOne(1L);
+//        Assertions.assertThat(testUser1).isEqualTo(
+//                Optional.of(new User(1L, "takahashi", "334532")));
     }
 
     @Test

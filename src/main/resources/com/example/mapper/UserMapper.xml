@@ -10,7 +10,7 @@
         SELECT id, username, password FROM users WHERE id = #{id}
     </select>
     <select id="selectName" resultType="com.example.domain.User">
-        SELECT id, username, password FROM users WHERE username = #{username}
+        SELECT id, username, password FROM users WHERE username = #{username} limit 1
     </select>
     <insert id="add" useGeneratedKeys="true" keyProperty="id">
         INSERT into users (username,password) values (#{username},#{password})

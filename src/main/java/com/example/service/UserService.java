@@ -28,9 +28,9 @@ public class UserService {
         return mapper.selectOne(id);
     }
 
-    public Optional<User> selectName(String username) {
-        return mapper.selectName(username);
-    }
+//    public Optional<User> selectName(String username) {
+//        return mapper.selectName(username);
+//    }
 
     //Insert処理
     public void create(User user) {
