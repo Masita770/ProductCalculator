@@ -5,23 +5,16 @@ import com.example.service.UserService;
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.core.api.dataset.ExpectedDataSet;
 import com.github.database.rider.spring.api.DBRider;
-import org.assertj.core.api.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mybatis.spring.boot.test.autoconfigure.MybatisTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 @DBRider
@@ -44,8 +37,8 @@ class UserMapperTest {
     @Test
 //    @DataSet("dbunit.yml")
 //    @ExpectedDataSet("test.yml")
-    @DataSet(cleanAfter = true)
-    @ExpectedDataSet(value = "tests.yml")
+    @DataSet(value = "tests.yml", cleanAfter = true)
+//    @ExpectedDataSet(value = "users.yml")
 //    @DataSet("test.yml")
 //    @ExpectedDataSet("tests-expected.yml")
 //    @Sql(scripts = {"classpath:/selectAll-test.sql"},
@@ -58,7 +51,7 @@ class UserMapperTest {
                 .contains(
                         new User(1L, "山下", "444224"),
                         new User(2L, "高橋", "22h5535"),
-                        new User(3L, "安生", "4442jfet")
+                        new User(3L, "安生", "zyo")
                 );
 //        List<User> users = mapper.selectAll();
 //        Mockito.doReturn(testUsers).when(mapper).selectAll();

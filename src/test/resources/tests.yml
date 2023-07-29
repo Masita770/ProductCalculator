@@ -1,4 +1,4 @@
-users:
-  - id: 1
-    name: "山下"
-    password: "33dd332"
+tests:
+  - id: 3
+    name: "山下", "高橋", "安生"
+    password: "444224", "22h5535", "4442jfet"
