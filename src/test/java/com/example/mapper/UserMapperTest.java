@@ -37,7 +37,8 @@ class UserMapperTest {
     @Test
 //    @DataSet("dbunit.yml")
 //    @ExpectedDataSet("test.yml")
-    @DataSet(value = "tests.yml", cleanAfter = true)
+    @DataSet(value = "test/tests.yml", cleanAfter = true)
+//    @ExpectedDataSet("test/tests-expected.yml")
 //    @ExpectedDataSet(value = "users.yml")
 //    @DataSet("test.yml")
 //    @ExpectedDataSet("tests-expected.yml")
@@ -45,13 +46,11 @@ class UserMapperTest {
 //            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     @Transactional
     void selectAllTest() {
-        List<User> users = mapper.selectAll();
-        org.assertj.core.api.Assertions.assertThat(users)
-                .hasSize(3)
+        List<User> tests = mapper.selectAll();
+        org.assertj.core.api.Assertions.assertThat(tests)
+                .hasSize(1)
                 .contains(
-                        new User(1L, "山下", "444224"),
-                        new User(2L, "高橋", "22h5535"),
-                        new User(3L, "安生", "zyo")
+                        new User(1L, "yamashita", "444535")
                 );
 //        List<User> users = mapper.selectAll();
 //        Mockito.doReturn(testUsers).when(mapper).selectAll();
