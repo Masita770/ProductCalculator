@@ -1,4 +1,4 @@
-tests:
-  - id: 3
-    name: "山下", "高橋", "安生"
-    password: "444224", "22h5535", "4442jfet"
+ tests:
+   - id: "3"
+ 　　  username: "山下"
+ 　　  password: "444224"

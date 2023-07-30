@@ -1,7 +1,7 @@
 cacheConnection: false
 cacheTableNames: false
 properties:
-  schema: users
+  schema: tests
   caseInsensitiveStrategy: LOWERCASE
   connectionConfig:
     url: "jdbc:mysql://localhost:3306/my_db"
