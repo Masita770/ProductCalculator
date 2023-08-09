@@ -1,4 +1,4 @@
-/*INSERT INTO users(
+INSERT INTO tests(
     id,
     username,
     password
@@ -6,4 +6,4 @@
     31,
     'nakazima',
     3324
-    );*/
+    );
