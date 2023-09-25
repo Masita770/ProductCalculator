@@ -16,15 +16,13 @@ public class UserService {
     @Autowired
     UserMapper mapper;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
 
     public List<User> getAll() {
         return mapper.selectAll();
     }
 
     //Read処理
-    public Optional<User> getListOne(Long id) {
+    public Optional<User> getListOne(Integer id) {
         return mapper.selectOne(id);
     }
 
@@ -35,9 +33,9 @@ public class UserService {
     //Insert処理
     public void create(User user) {
         // 6/27 追加
-        User userInfo = new User();
-        userInfo.setUsername(user.getUsername());
-        userInfo.setPassword(passwordEncoder.encode(user.getPassword()));
+//        User userInfo = new User();
+//        userInfo.setUsername(user.getUsername());
+////        userInfo.setPassword(passwordEncoder.encode(user.getPassword()));
         mapper.add(user);
     }
 
@@ -49,6 +47,11 @@ public class UserService {
     //Delete処理
     public void delete(User delete) {
         mapper.delete(delete);
+    }
+
+
+    public User certificate(String username) {
+        return mapper.certificate(username);
     }
 }
 

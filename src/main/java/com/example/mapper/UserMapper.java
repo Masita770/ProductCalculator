@@ -18,10 +18,7 @@ public interface UserMapper {
 
     //一件表示
     //@Select("SELECT id, username, password FROM users WHERE id = #{id}")
-    Optional<User> selectOne(Long id);
-    User selectName(String username);
-
-
+    Optional<User> selectOne(Integer id);
 
 
     //Insert処理
@@ -35,5 +32,7 @@ public interface UserMapper {
     //Delete処理
     //@Delete("DELETE FROM users WHERE id = #{id}")
     void delete(User delete);
+
+    User certificate(String username);
 }
 

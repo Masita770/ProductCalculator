@@ -29,7 +29,7 @@ public class UserController {
 
     //Read処理
     @GetMapping("user/{id}")
-    public String user(@PathVariable("id") Long id, Model model) throws NotFoundException {
+    public String user(@PathVariable("id") Integer id, Model model) throws NotFoundException {
         Optional<User> user = service.getListOne(id);
         user.ifPresentOrElse(inside -> model.addAttribute("user", inside), () ->
                 model.addAttribute("user", user));
@@ -62,7 +62,7 @@ public class UserController {
     }
 
     @GetMapping("update/{id}")
-    public String update(@PathVariable("id")Long id, Model model) {
+    public String update(@PathVariable("id")Integer id, Model model) {
         Optional<User> userUpdate = service.getListOne(id);
         userUpdate.ifPresentOrElse(inside -> {
             model.addAttribute("userUpdate", inside);
@@ -74,14 +74,14 @@ public class UserController {
 
     //Update処理　編集対象指定
     @RequestMapping("/edit/{id}")
-    public String update(@PathVariable("id")Long id, @ModelAttribute User user) {
+    public String update(@PathVariable("id")Integer id, @ModelAttribute User user) {
         user.setId(id);
         service.update(user);
         return "user/edit";
     }
 
     @RequestMapping("deletePause/{id}")
-    public String deleteOne(@PathVariable("id")Long id, @ModelAttribute User user, Model model) {
+    public String deleteOne(@PathVariable("id")Integer id, @ModelAttribute User user, Model model) {
         service.getListOne(id);
         model.addAttribute("deleteDate", user);
         return "/user/deletePause";
