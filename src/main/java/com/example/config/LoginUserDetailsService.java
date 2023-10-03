@@ -15,6 +15,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.thymeleaf.util.StringUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -42,11 +43,12 @@ public class LoginUserDetailsService implements UserDetailsService {
 
    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       User user = userMapper.certificate(username);
-       if ( user == null) {
+       User userData = userMapper.certificate(username);
+       if ( userData == null) {
            throw new UsernameNotFoundException("ユーザーが見つかりません");
        }
-       return (new LoginUserDetails(user));
+       return new LoginUserDetails(userData);
+
 
 //        return new LoginUserDetails(user);
 //        return new LoginUserDetails(user.get().getUsername(), user.get().getPassword(), Collections.emptyList().toString());

@@ -26,12 +26,14 @@ public class LoginUserDetails implements UserDetails {
 //        super();
 //    }
 
-    private User userData;
+//    private User userData;
+//    private Integer id;
+//    private String password;
     public LoginUserDetails(User userData) {
         this.userData = userData;
     }
 
-//    private User user;
+    private User userData;
 //    public LoginUserDetails(User user) {
 //        super();
 //        this.user = user;
@@ -50,11 +52,19 @@ public class LoginUserDetails implements UserDetails {
     @Override
     public String getPassword() {
         return this.userData.getPassword();
+//        return this.userData.getPassword();
     }
+
+//    @Override
+//    public Long getId() {
+//        return this.userData.getId();
+//    }
 
     @Override
     public String getUsername() {
-        return this.userData.getUsername();
+//        return this.userData.getUsername();
+//        return Integer.valueOf(userData.getId()).toString();
+        return Integer.valueOf(userData.getId()).toString();
     }
 
     @Override

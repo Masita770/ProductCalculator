@@ -15,7 +15,7 @@ public class User {
 
 
 
-    private String authorities;
+//    private String authorities;
 
 
 
@@ -26,13 +26,13 @@ public class User {
         return id.equals(user.id) && username.equals(user.username) && password.equals(user.password);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, username, password);
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, username, password);
+//    }
 
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -61,13 +61,13 @@ public class User {
         this.password = password;
     }
 
-    public String getAuthorities() {
-        return authorities;
-    }
-
-    public void setAuthorities(String authorities) {
-        this.authorities = authorities;
-    }
+//    public String getAuthorities() {
+//        return authorities;
+//    }
+//
+//    public void setAuthorities(String authorities) {
+//        this.authorities = authorities;
+//    }
 
 
 //    public String getMailAddress() {
