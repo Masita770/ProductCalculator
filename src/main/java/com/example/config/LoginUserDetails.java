@@ -12,36 +12,12 @@ import java.util.Optional;
 
 public class LoginUserDetails implements UserDetails {
 
-//    private String username;
-//    private String password;
-//    private List<GrantedAuthority> authorities = new ArrayList<>();
-//
-//    public LoginUserDetails(String username, String password, String authority) {
-//        this.username = username;
-//        this.password = password;
-//        this.authorities = AuthorityUtils.createAuthorityList(authority);
-//    }
 
-//    public LoginUserDetails(User user) {
-//        super();
-//    }
-
-//    private User userData;
-//    private Integer id;
-//    private String password;
     public LoginUserDetails(User userData) {
         this.userData = userData;
     }
 
     private User userData;
-//    public LoginUserDetails(User user) {
-//        super();
-//        this.user = user;
-//    }
-//
-//    public User getUser() {
-//        return user;
-//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -52,19 +28,13 @@ public class LoginUserDetails implements UserDetails {
     @Override
     public String getPassword() {
         return this.userData.getPassword();
-//        return this.userData.getPassword();
     }
 
-//    @Override
-//    public Long getId() {
-//        return this.userData.getId();
-//    }
+
 
     @Override
     public String getUsername() {
         return this.userData.getUsername();
-//        return Integer.valueOf(userData.getId()).toString();
-//        return Integer.valueOf(userData.getId()).toString();
     }
 
     @Override
