@@ -1,4 +1,4 @@
-INSERT INTO users(
+/*INSERT INTO users(
     id,
     username,
     password
@@ -6,4 +6,4 @@ INSERT INTO users(
     1,
     'nakazima',
     3324
-    );
+    );*/

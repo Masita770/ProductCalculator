@@ -91,8 +91,8 @@ class UserControllerTest {
     @WithMockUser
     void getListOneTest() throws Exception{
         // Optionalの値が存在しないとHTML側の方でエラーが引っかかる
-        Mockito.when(service.getListOne(Mockito.anyLong())).thenReturn(Optional.of(
-                new User(1L, "takayama", "4422244")));
+        Mockito.when(service.getListOne(Mockito.any())).thenReturn(Optional.of(
+                new User(1, "takayama", "4422244")));
 
         mockMvc.perform(MockMvcRequestBuilders.get("/user/user/1").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -130,8 +130,8 @@ class UserControllerTest {
     @Test
     @WithMockUser
     void updateTest() throws Exception {
-        Mockito.when(service.getListOne(Mockito.anyLong())).thenReturn(Optional.of(
-                new User(1L, "tukishima", "443244")));
+        Mockito.when(service.getListOne(Mockito.any())).thenReturn(Optional.of(
+                new User(1, "tukishima", "443244")));
         mockMvc.perform(MockMvcRequestBuilders.get("/user/update/1"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(model().attributeExists("userUpdate"))
@@ -142,8 +142,8 @@ class UserControllerTest {
     @Test
     @WithMockUser
     void deleteOneTest() throws Exception {
-        Mockito.when(service.getListOne(1L)).thenReturn(Optional.of(
-                new User(1L, "nakazma", "77699")));
+        Mockito.when(service.getListOne(1)).thenReturn(Optional.of(
+                new User(1, "nakazma", "77699")));
         mockMvc.perform(MockMvcRequestBuilders.post("/user/deletePause/1")
                         .with(SecurityMockMvcRequestPostProcessors.csrf()))
                         .andExpect(MockMvcResultMatchers.status().isOk())

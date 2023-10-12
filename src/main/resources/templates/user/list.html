@@ -22,7 +22,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:if="${list}" th:each="list : ${list}">
+    <tr th:if="${list}" th:each="list : ${list}" th:method="post">
 
         <th th:text="${list.id}"></th>
 

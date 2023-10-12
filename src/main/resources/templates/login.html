@@ -7,18 +7,19 @@
 </head>
 <body>
 <h1 class="mt-3">テストアプリケーション</h1>
-<form th:action="@{/login}" method="post">
+<form th:action="@{/list}" method="post">
     <div class="mt-3">
         <label >ユーザー名</label>
-        <input type="text" name="username" class="form-control" />
+        <input type="text" class="form-control" name="username"/>
     </div>
     <div class="mt-3">
         <label>パスワード</label>
-        <input type="text" name="password" class="form-control" />
+        <input type="text" class="form-control" name="password"/>
     </div>
     <div class="mt-3">
         <button type="submit" class="btn btn-primary" href="user/list">ログイン</button>
     </div>
+    <input type="submit" value="認証" />
 </form>
 <li>
     <a href="@{/user/list}">一覧</a>

@@ -3,8 +3,8 @@ package com.example.mapper;
 import com.example.domain.User;
 import com.example.service.UserService;
 import com.github.database.rider.core.api.dataset.DataSet;
-import com.github.database.rider.core.api.dataset.ExpectedDataSet;
 import com.github.database.rider.spring.api.DBRider;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -15,6 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @DBRider
@@ -48,9 +49,13 @@ class UserMapperTest {
     void selectAllTest() {
         List<User> tests = mapper.selectAll();
         org.assertj.core.api.Assertions.assertThat(tests)
+//                .hasSize(
+//        org.assertj.core.api.Assertions.assertThat(tests).isNotNull();
+//        org.assertj.core.api.Assertions.assertThat(tests.stream().count()).isEqualTo(3L);
+//        mapper.selectAll(tests).ifPresents
                 .hasSize(1)
                 .contains(
-                        new User(1L, "yamashita", "444535")
+                        new User(1, "yamashita", "444535")
                 );
 //        List<User> users = mapper.selectAll();
 //        Mockito.doReturn(testUsers).when(mapper).selectAll();
@@ -58,40 +63,49 @@ class UserMapperTest {
 //        assertEquals(1,testUser.size());
     }
 
-    private User createUsers() {
-        User user = new User(1L, "yamashita", "33282");
-        user.setId(1L);
-        user.setUsername("yamashita");
-        user.setPassword("33282");
-        return user;
-    }
+//    private User createUsers() {
+//        User user = new User(1L, "yamashita", "33282");
+//        user.setId(1L);
+//        user.setUsername("yamashita");
+//        user.setPassword("33282");
+//        return user;
+//    }
 
     @Test
+    @DataSet(value = "test/tests.yml", cleanAfter = true)
+    @Transactional
     void insertTest() {
-        User newUser = new User(1L, "yamashita", "33453");
+        User newUser = new User(1, "yamashita", "33453");
         mapper.add(newUser);
        System.out.println(newUser);
     }
 
     @Test
+    @DataSet(value = "test/tests.yml", cleanAfter = true)
+    @Transactional
     void selectOneTest() throws Exception {
 //        Mockito.doReturn(Optional.of(user)).when(mapper).selectOne(1L);
-//        Optional<User> testUser1 = service.getListOne(1L);
+        Optional<User> testUser1 = mapper.selectOne(1);
+
 //        //Optional<User> user = mapper.selectOne(1L);
-//        Assertions.assertThat(testUser1).isEqualTo(
-//                Optional.of(new User(1L, "takahashi", "334532")));
+        Assertions.assertThat(testUser1).isEqualTo(
+                Optional.of(new User(1, "takahashi", "334532")));
     }
 
     @Test
+    @DataSet(value = "test/tests.yml", cleanAfter = true)
+    @Transactional
     void updateTest() throws Exception {
-        User userUpdate = new User(1L, "yamazaki", "44424");
+        User userUpdate = new User(1, "yamazaki", "44424");
         mapper.update(userUpdate);
         System.out.println(userUpdate);
     }
 
     @Test
+    @DataSet(value = "test/test.yml", cleanAfter = true)
+    @Transactional
     void deleteTest() {
-        User deleteUser = new User(1L, "yamazaki", "333243");
+        User deleteUser = new User(1, "yamazaki", "333243");
         mapper.delete(deleteUser);
     }
 }

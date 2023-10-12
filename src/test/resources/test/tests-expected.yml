@@ -1,4 +1,4 @@
-tests:
-  - id: 1L
+users:
+  - id: 1
     username: "yamashita"
     password: "444535"

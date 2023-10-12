@@ -19,6 +19,6 @@
         DELETE FROM users WHERE id = #{id}
     </delete>
     <select id="certificate" resultType="com.example.domain.User">
-        SELECT username, password FROM users WHERE username = #{username}
+        SELECT id, username, password FROM users WHERE username = #{username}
     </select>
 </mapper>

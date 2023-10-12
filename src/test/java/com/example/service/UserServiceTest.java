@@ -35,21 +35,21 @@ class UserServiceTest {
     @Test
     public void selectAllTest() {
         when(mapper.selectAll()).thenReturn(List.of(
-                new User(1L,"Nagano", "33024"),
-                new User(2L, "nakazima", "34287"),
-                new User(3L, "Yamashita", "55435")
+                new User(1,"Nagano", "33024"),
+                new User(2, "nakazima", "34287"),
+                new User(3, "Yamashita", "55435")
         ));
         List<User> users = service.getAll();
         assertEquals(3, users.size());
-        List.of(new User(1L, "Nagano", "33024"),
-                new User(2L, "nakazima", "34287"),
-                new User(3L, "Yamashita", "55435"));
+        List.of(new User(1, "Nagano", "33024"),
+                new User(2, "nakazima", "34287"),
+                new User(3, "Yamashita", "55435"));
         verify(mapper).selectAll();
     }
 
     @Test
     void createTest() {
-        User newUser = new User(1L, "yamazaki", "33463");
+        User newUser = new User(1, "yamazaki", "33463");
         doNothing().when(mapper).add(newUser);
         service.create(newUser);
         verify(mapper).add(newUser);
@@ -57,10 +57,10 @@ class UserServiceTest {
 
     @Test
     void getListOne() {
-        Mockito.doReturn(Optional.of(new User(1L, "takahashi", "33424"))).when(mapper).selectOne(1L);
-        Optional<User> userTest = service.getListOne(1L);
+        Mockito.doReturn(Optional.of(new User(1, "takahashi", "33424"))).when(mapper).selectOne(1);
+        Optional<User> userTest = service.getListOne(1);
         Assertions.assertThat(userTest).isEqualTo(
-                Optional.of(new User(1L, "takahashi", "33424")));
+                Optional.of(new User(1, "takahashi", "33424")));
     }
 
     @Test
@@ -69,14 +69,14 @@ class UserServiceTest {
 //                .when(mapper).selectOne(1L);
 
 //        Optional<User> userUpdate = Optional.of(new User(1L, "nalabati", "33324"));
-        User userUpdate = new User(1L, "nakabati", "33324");
+        User userUpdate = new User(1, "nakabati", "33324");
         service.update( userUpdate);
         verify(mapper).update(userUpdate);
     }
 
     @Test
     void deleteTest() {
-        User deleteUser = new User(1L, "nakayama", "33344");
+        User deleteUser = new User(1, "nakayama", "33344");
         service.delete(deleteUser);
         verify(mapper).delete(deleteUser);
     }
