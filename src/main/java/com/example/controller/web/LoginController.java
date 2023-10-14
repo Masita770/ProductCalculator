@@ -25,10 +25,6 @@ public class LoginController {
         return "login";
     }
 
-//    @RequestMapping("/list")
-//    public String login() {
-//        return "list";
-//    }
 
     @PostMapping("/login")
     public String login(User form) {
@@ -36,14 +32,7 @@ public class LoginController {
         return "redirect:/list";
     }
 
-//    @RequestMapping("/login")
-//    public String error(Model model) {
-//        model.addAttribute("errorMsg", "ログイン認証に失敗");
-//        return "login";
-//    }
 
-
-    // 10/10ログイン成功後画面が　作成
     @RequestMapping("/signIn")
     public String success(Authentication authentication, Model model) {
         return "signIn";

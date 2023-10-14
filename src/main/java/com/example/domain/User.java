@@ -17,13 +17,4 @@ public class User {
         private String username;
         private String password;
 
-
-
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof User user)) return false;
-//        return id.equals(user.id) && username.equals(user.username) && password.equals(user.password);
-//    }
 }

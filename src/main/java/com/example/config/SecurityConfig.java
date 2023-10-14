@@ -39,10 +39,6 @@ public class SecurityConfig {
         return http.build();
     }
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(service);
-//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
