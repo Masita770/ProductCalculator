@@ -36,14 +36,6 @@ public class UserController {
         return "user/user";
     }
 
-//    @GetMapping("user/{username}")
-//    public String name(@PathVariable("username") String username, Model model) throws NotFoundException {
-//        Optional<User> user = service.selectName(username);
-//        user.ifPresentOrElse(inside -> model.addAttribute("username", inside), () ->
-//                model.addAttribute("username", user));
-//        return "user/user";
-//    }
-
 
     @GetMapping("form")
     public String newUser(@RequestBody(required = false) Model model) {
@@ -52,9 +44,6 @@ public class UserController {
     @PostMapping("edit")
     public String add(@ModelAttribute User user, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
-//            List<User> users = service.getAll();
-//            model.addAttribute("newUser", users);
-            //service.create(user);
             return "user/edit";
         }
         service.create(user);
