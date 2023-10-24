@@ -2,6 +2,7 @@ package com.example.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -25,10 +26,10 @@ public class SecurityConfig {
         http.formLogin(login -> login
                 .loginPage("/login").permitAll()
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/user/list", true)
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .failureUrl("/login?error")
+                .defaultSuccessUrl("/signIn", true)
                 .and()
         ).logout(logout -> logout.logoutSuccessUrl("/login")
                 .permitAll()

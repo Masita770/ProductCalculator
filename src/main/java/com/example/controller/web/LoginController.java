@@ -20,21 +20,14 @@ public class LoginController {
     LoginUserDetailsService service;
 
 
-    @GetMapping("/login")
-    public String loginView(Model model, User form) {
+    @RequestMapping("/login")
+    public String loginView(Model model) {
         return "login";
     }
 
 
-    @PostMapping("/login")
-    public String login(User form) {
-        System.out.println(form.toString());
-        return "redirect:/list";
-    }
-
-
     @RequestMapping("/signIn")
-    public String success(Authentication authentication, Model model) {
+    public String success(Model model) {
         return "signIn";
     }
 }

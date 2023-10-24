@@ -4,21 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.UserMapper">
     <select id="selectAll" resultType="com.example.domain.User">
-        SELECT * FROM users
+        SELECT * FROM user_account
     </select>
     <select id="selectOne" resultType="com.example.domain.User">
-        SELECT id, username, password FROM users WHERE id = #{id}
+        SELECT id, username, password FROM user_account WHERE id = #{id}
     </select>
     <insert id="add" useGeneratedKeys="true" keyProperty="id">
-        INSERT into users (username,password) values (#{username},#{password})
+        INSERT into user_account (username,password) values (#{username},#{password})
     </insert>
     <update id="update">
-        UPDATE users set username = #{username}, password = #{password} where id = #{id}
+        UPDATE user_account set username = #{username}, password = #{password} where id = #{id}
     </update>
     <delete id="delete">
-        DELETE FROM users WHERE id = #{id}
+        DELETE FROM user_account WHERE id = #{id}
     </delete>
     <select id="certificate" resultType="com.example.domain.User">
-        SELECT id, username, password FROM users WHERE username = #{username}
+        SELECT id, username, password FROM user_account WHERE username = #{username}
     </select>
 </mapper>
