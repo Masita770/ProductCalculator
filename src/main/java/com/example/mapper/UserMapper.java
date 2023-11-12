@@ -34,5 +34,7 @@ public interface UserMapper {
     void delete(User delete);
 
     User certificate(String username);
+
+    void make(User user);
 }
 

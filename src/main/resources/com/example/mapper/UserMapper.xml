@@ -12,6 +12,9 @@
     <insert id="add" useGeneratedKeys="true" keyProperty="id">
         INSERT into user_account (username,password) values (#{username},#{password})
     </insert>
+    <insert id="make" useGeneratedKeys="true" keyProperty="id">
+        INSERT into user_account (username,password) values (#{username},#{password})
+    </insert>
     <update id="update">
         UPDATE user_account set username = #{username}, password = #{password} where id = #{id}
     </update>
