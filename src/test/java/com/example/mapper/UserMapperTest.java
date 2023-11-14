@@ -1,6 +1,5 @@
 package com.example.mapper;
 
-import com.example.domain.User;
 import com.example.service.UserService;
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.spring.api.DBRider;

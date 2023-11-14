@@ -4,15 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 //import com.example.service.AccountService;
+import com.example.domain.Users;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.domain.User;
 import com.example.service.UserService;
 
 @Controller
@@ -27,7 +26,7 @@ public class UserController {
 
     @RequestMapping("list")
     public String list(Model model) {
-        List<User> users = service.getAll();
+        List<Users> users = service.getAll();
         model.addAttribute("list", users);
         return "user/list";
     }
@@ -35,7 +34,7 @@ public class UserController {
     //Read処理
     @GetMapping("user/{id}")
     public String user(@PathVariable("id") Integer id, Model model) throws NotFoundException {
-        Optional<User> user = service.getListOne(id);
+        Optional<Users> user = service.getListOne(id);
         user.ifPresentOrElse(inside -> model.addAttribute("user", inside), () ->
                 model.addAttribute("user", user));
         return "user/user";
@@ -47,7 +46,7 @@ public class UserController {
         return "user/form";
     }
     @PostMapping("edit")
-    public String add(@ModelAttribute User user, BindingResult bindingResult, Model model) {
+    public String add(@ModelAttribute Users user, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
             return "user/edit";
         }
@@ -57,7 +56,7 @@ public class UserController {
 
     @GetMapping("update/{id}")
     public String update(@PathVariable("id")Integer id, Model model) {
-        Optional<User> userUpdate = service.getListOne(id);
+        Optional<Users> userUpdate = service.getListOne(id);
         userUpdate.ifPresentOrElse(inside -> {
             model.addAttribute("userUpdate", inside);
         }, () -> {
@@ -68,21 +67,21 @@ public class UserController {
 
     //Update処理　編集対象指定
     @RequestMapping("/edit/{id}")
-    public String update(@PathVariable("id")Integer id, @ModelAttribute User user) {
+    public String update(@PathVariable("id")Integer id, @ModelAttribute Users user) {
         user.setId(id);
         service.update(user);
         return "user/edit";
     }
 
     @RequestMapping("deletePause/{id}")
-    public String deleteOne(@PathVariable("id")Integer id, @ModelAttribute User user, Model model) {
+    public String deleteOne(@PathVariable("id")Integer id, @ModelAttribute Users user, Model model) {
         service.getListOne(id);
         model.addAttribute("deleteDate", user);
         return "/user/deletePause";
     }
 
     @GetMapping("delete/{id}")
-    public String delete(@ModelAttribute User delete) {
+    public String delete(@ModelAttribute Users delete) {
         service.delete(delete);
         return "user/delete";
     }

@@ -3,11 +3,10 @@ package com.example.service;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.domain.Users;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.domain.User;
 import com.example.mapper.UserMapper;
 
 @Service
@@ -17,12 +16,12 @@ public class UserService {
     UserMapper mapper;
 
 
-    public List<User> getAll() {
+    public List<Users> getAll() {
         return mapper.selectAll();
     }
 
     //Read処理
-    public Optional<User> getListOne(Integer id) {
+    public Optional<Users> getListOne(Integer id) {
         return mapper.selectOne(id);
     }
 
@@ -31,7 +30,7 @@ public class UserService {
 //    }
 
     //Insert処理
-    public void create(User user) {
+    public void create(Users user) {
         // 6/27 追加
 //        User userInfo = new User();
 //        userInfo.setUsername(user.getUsername());
@@ -40,18 +39,18 @@ public class UserService {
     }
 
     //Update処理
-    public void update(User update) {
+    public void update(Users update) {
         mapper.update(update);
     }
 
     //Delete処理
-    public void delete(User delete) {
+    public void delete(Users delete) {
         mapper.delete(delete);
     }
 
 
-    public User certificate(String username) {
-        return mapper.certificate(username);
-    }
+//    public Users certificate(Integer id) {
+//        return mapper.certificate(id);
+//    }
 }
 
