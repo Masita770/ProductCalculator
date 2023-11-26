@@ -4,7 +4,8 @@
 在庫管理を円滑にするためのアプリです。
 
 # 使用技術
-Java 11　　Spring Boot 3.0.5
+Java 11  
+Spring Boot 3.0.5
  
 # Features
  
