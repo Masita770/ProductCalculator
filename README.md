@@ -5,7 +5,8 @@
 
 # 使用技術
 Java 11  
-Spring Boot 3.0.5
+Spring Boot 3.0.5  
+MySQL 5.7.33
  
 # Features
  
