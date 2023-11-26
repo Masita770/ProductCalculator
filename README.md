@@ -1,10 +1,11 @@
 # ProductCalculator
-
+# 概要
+ 
 在庫管理を円滑にするためのアプリです。
- 
-# DEMO
- 
-"hoge"の魅力が直感的に伝えわるデモ動画や図解を載せる
+
+# 使用技術
+Java 11
+Spring Boot 3.0.5
  
 # Features
  
