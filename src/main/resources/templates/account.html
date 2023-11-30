@@ -1,0 +1,29 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+<body>
+<h2>アカウント作成</h2>
+<div class="container">
+  <form th:action="@{/createAccount}" th:method="post" th:object="${newAccount}">
+    <div class="mb-3">
+
+      <a class="form-control" type="text" name="id"></a>
+      <label class="form-label">名前</label>
+      <input class="form-control" type="text" name="username">
+
+      <label class="control-label">パスワード</label>
+      <input class="form-control" type="text" name="password">
+    </div>
+
+
+    <div class="text-center">
+      <input type="submit" value="登録" class="btn btn-primary" href="/createAccount" />
+
+    </div>
+  </form>
+</div>
+<div id="righttext"> <a class="btn btn-link" id ="linktext" href="list">一覧画面</a> </div>
+</body>
+</html>
