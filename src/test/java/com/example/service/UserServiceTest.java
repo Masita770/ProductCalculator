@@ -3,19 +3,15 @@ package com.example.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import com.example.domain.User;
+import com.example.domain.Users;
 import com.example.mapper.UserMapper;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.configuration.IMockitoConfiguration;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,21 +31,21 @@ class UserServiceTest {
     @Test
     public void selectAllTest() {
         when(mapper.selectAll()).thenReturn(List.of(
-                new User(1,"Nagano", "33024"),
-                new User(2, "nakazima", "34287"),
-                new User(3, "Yamashita", "55435")
+                new Users(1,"Nagano", "33024"),
+                new Users(2, "nakazima", "34287"),
+                new Users(3, "Yamashita", "55435")
         ));
-        List<User> users = service.getAll();
+        List<Users> users = service.getAll();
         assertEquals(3, users.size());
-        List.of(new User(1, "Nagano", "33024"),
-                new User(2, "nakazima", "34287"),
-                new User(3, "Yamashita", "55435"));
+        List.of(new Users(1, "Nagano", "33024"),
+                new Users(2, "nakazima", "34287"),
+                new Users(3, "Yamashita", "55435"));
         verify(mapper).selectAll();
     }
 
     @Test
     void createTest() {
-        User newUser = new User(1, "yamazaki", "33463");
+        Users newUser = new Users(1, "yamazaki", "33463");
         doNothing().when(mapper).add(newUser);
         service.create(newUser);
         verify(mapper).add(newUser);
@@ -57,10 +53,10 @@ class UserServiceTest {
 
     @Test
     void getListOne() {
-        Mockito.doReturn(Optional.of(new User(1, "takahashi", "33424"))).when(mapper).selectOne(1);
-        Optional<User> userTest = service.getListOne(1);
+        Mockito.doReturn(Optional.of(new Users(1, "takahashi", "33424"))).when(mapper).selectOne(1);
+        Optional<Users> userTest = service.getListOne(1);
         Assertions.assertThat(userTest).isEqualTo(
-                Optional.of(new User(1, "takahashi", "33424")));
+                Optional.of(new Users(1, "takahashi", "33424")));
     }
 
     @Test
@@ -69,14 +65,14 @@ class UserServiceTest {
 //                .when(mapper).selectOne(1L);
 
 //        Optional<User> userUpdate = Optional.of(new User(1L, "nalabati", "33324"));
-        User userUpdate = new User(1, "nakabati", "33324");
+        Users userUpdate = new Users(1, "nakabati", "33324");
         service.update( userUpdate);
         verify(mapper).update(userUpdate);
     }
 
     @Test
     void deleteTest() {
-        User deleteUser = new User(1, "nakayama", "33344");
+        Users deleteUser = new Users(1, "nakayama", "33344");
         service.delete(deleteUser);
         verify(mapper).delete(deleteUser);
     }

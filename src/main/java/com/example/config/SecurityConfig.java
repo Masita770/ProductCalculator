@@ -22,8 +22,10 @@ import org.springframework.security.web.SecurityFilterChain;
 //@EnableWebSecurity
 public class SecurityConfig {
 
-//    @Bean
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http.authorizeHttpRequests(auth -> auth
+//                .requestMatchers("/**").permitAll());
         http.formLogin(login -> login
                 .loginPage("/login").permitAll()
                 .loginProcessingUrl("/login")
@@ -35,16 +37,16 @@ public class SecurityConfig {
         ).logout(logout -> logout.logoutSuccessUrl("/login")
                 .permitAll()
         ).authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/", "/login").permitAll()
+                .requestMatchers("/**").permitAll()
                 .anyRequest().authenticated()
         );
         return http.build();
     }
 
 
-//    @Bean
+    @Bean
     public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-//        }
+//        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        return new BCryptPasswordEncoder();
     }
 }
