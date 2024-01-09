@@ -3,15 +3,20 @@ server:
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/product
+    url: jdbc:mysql://localhost:3306/productcalculator?zeroDateTimeBehavior=convertToNull
     username: root
     password: sei1025jitu7z
+
 
   sql:
     init:
       mode: always
+
   h2:
     console:
+
+  main:
+    allow-bean-definition-overriding: true
 
 
 mybatis:

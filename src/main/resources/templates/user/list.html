@@ -17,8 +17,12 @@
     <thead>
     <tr>
         <th id="id">ID</th>
-        <th id="username">名前</th>
-        <th id="password">パスワード</th>
+        <th id="pNumber">品番</th>
+        <th id="product">製品</th>
+        <th id="category">カテゴリ</th>
+        <th id="price">価格</th>
+        <th id="registrationDate">登録日</th>
+        <th id="deletedDate">廃番日</th>
     </tr>
     </thead>
     <tbody>
@@ -26,9 +30,17 @@
 
         <th th:text="${list.id}"></th>
 
-        <th th:text="${list.username}"></th>
+        <th th:text="${list.p_number}"></th>
 
-        <th th:text="${list.password}"></th>
+        <th th:text="${list.product}"></th>
+
+        <th th:text="${list.category}"></th>
+
+        <th th:text="${list.price}"></th>
+
+        <th th:text="${list.registrationDate}"></th>
+
+        <th th:text="${list.deletedDate}"></th>
 
         <td><a class="btn btn-outline-primary btn-sm" th:href="@{user/{id}(id=${list.id})}">参照</a></td>
     </tr>

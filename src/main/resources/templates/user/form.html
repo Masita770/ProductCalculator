@@ -6,15 +6,21 @@
 <body>
 <h2>登録画面</h2>
 <div class="container">
-    <form th:action="@{/user/edit}" th:method="post" th:object="${newUser}">
+    <form th:action="@{/user/edit}" th:method="post" th:object="${newProducts}">
         <div class="mb-3">
 
             <a class="form-control" type="text" name="id"></a>
-            <label class="form-label">名前</label>
-            <input class="form-control" type="text" name="username">
+            <label class="form-label">品番</label>
+            <input class="form-control" type="text" name="p_number">
 
-            <label class="control-label">年齢</label>
-            <input class="form-control" type="text" name="password">
+            <label class="control-label">製品名</label>
+            <input class="form-control" type="text" name="product">
+
+            <label class="control-label">カテゴリ</label>
+            <input class="form-control" type="text" name="category">
+
+            <label class="control-label">価格</label>
+            <input class="form-control" type="text" name="price">
         </div>
 
 

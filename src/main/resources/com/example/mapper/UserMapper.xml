@@ -3,25 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.UserMapper">
-    <select id="selectAll" resultType="com.example.domain.Users">
-        SELECT * FROM account
+    <select id="selectAll" resultType="com.example.domain.Products">
+        SELECT * FROM products
     </select>
-    <select id="selectOne" resultType="com.example.domain.Users">
-        SELECT id, username, password FROM account WHERE id = #{id}
+    <select id="selectOne" resultType="com.example.domain.Products">
+        SELECT id, p_number, product, category, price, registration_date, deleted_date FROM products WHERE id = #{id}
     </select>
     <insert id="add" useGeneratedKeys="true" keyProperty="id">
-        INSERT into account (username,password) values (#{username},#{password})
+        INSERT into products (p_number, product, category, price) values (#{p_number},#{product},#{category},#{price})
     </insert>
-    <insert id="make" useGeneratedKeys="true" keyProperty="id">
-        INSERT into account (username,password) values (#{username},#{password})
-    </insert>
+<!--    <insert id="make" useGeneratedKeys="true" keyProperty="id">-->
+<!--        INSERT into account (username,password) values (#{username},#{password})-->
+<!--    </insert>-->
     <update id="update">
-        UPDATE account set username = #{username}, password = #{password} where id = #{id}
+        UPDATE products set
+        p_number = #{p_number}, product = #{product}, category = #{category}, price = #{price}
+        where id = #{id}
     </update>
     <delete id="delete">
-        DELETE FROM account WHERE id = #{id}
+        DELETE FROM products WHERE id = #{id}
     </delete>
-    <select id="certificate" resultType="com.example.domain.Users">
-        SELECT * FROM account WHERE id = #{id}
+    <select id="certificate" resultType="com.example.domain.Products">
+        SELECT * FROM products WHERE id = #{id}
     </select>
 </mapper>
