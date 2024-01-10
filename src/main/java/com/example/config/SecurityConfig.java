@@ -27,14 +27,14 @@ public class SecurityConfig {
 //        http.authorizeHttpRequests(auth -> auth
 //                .requestMatchers("/**").permitAll());
         http.formLogin(login -> login
-                .loginPage("/login").permitAll()
-                .loginProcessingUrl("/login")
+                .loginPage("/security/login").permitAll()
+                .loginProcessingUrl("/security/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .failureUrl("/login?error")
-                .defaultSuccessUrl("/signIn", true)
+                .defaultSuccessUrl("/security/signIn", true)
                 .and()
-        ).logout(logout -> logout.logoutSuccessUrl("/login")
+        ).logout(logout -> logout.logoutSuccessUrl("/security/login")
                 .permitAll()
         ).authorizeHttpRequests(authorize -> authorize
                 .requestMatchers("/**").permitAll()

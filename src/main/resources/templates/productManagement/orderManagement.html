@@ -22,7 +22,7 @@
   </tr>
   </thead>
   <tbody>
-  <div th:object="${request}">
+  <div th:object="${productOne}">
 
     <th th:text="*{id}"></th>
 
@@ -37,7 +37,7 @@
   </tbody>
 </table>
 
-<form th:action="@{/product/result}" th:method="post" th:object="${newOrder}">
+<form th:action="@{/product/}" th:method="post" th:object="${newOrder}">
 
   <label class="form-label">製品</label>
 

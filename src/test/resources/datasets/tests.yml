@@ -1,0 +1,10 @@
+account_test:
+  - id: 1
+    username: "yamashita"
+    password: "3333"
+  - id: 2
+    username: "nakabayashi"
+    password: "2222"
+  - id: 3
+    username: "tuskamoto"
+    password: "4444"

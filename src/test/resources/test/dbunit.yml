@@ -1,9 +1,0 @@
-cacheConnection: false
-cacheTableNames: false
-caseInsensitiveStrategy: LOWERCASE
-properties:
-  schema: my_db
-  connectionConfig:
-    url: "jdbc:mysql://localhost:3306/my_db"
-    user: "root"
-    password: "sei1025jitu7z"

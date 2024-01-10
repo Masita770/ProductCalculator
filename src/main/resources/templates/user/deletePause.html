@@ -16,12 +16,12 @@
             <p class="form-control" th:text="*{id}"></p>
         </div>
         <div class="form-row">
-            <label class="control-label">名前</label>
-            <p class="form-control" th:text="*{username}"></p>
+            <label class="control-label">製品名</label>
+            <p class="form-control" th:text="*{product}"></p>
         </div>
         <div class="form-row">
-            <label class="control-label">年齢</label>
-            <p class="form-control" th:text="*{password}"></p>
+            <label class="control-label">価格</label>
+            <p class="form-control" th:text="*{price}"></p>
         </div>
         <a class="btn btn-outline-success btn-sm" th:href="@{/user/delete/{id}(id=*{id})}">削除</a>
         　　			</div>

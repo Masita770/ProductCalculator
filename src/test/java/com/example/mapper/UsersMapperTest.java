@@ -1,9 +1,11 @@
 package com.example.mapper;
 
+import com.example.domain.Products;
 import com.example.domain.Users;
 import com.example.service.UserService;
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.spring.api.DBRider;
+import org.apache.ibatis.annotations.Mapper;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,6 +23,7 @@ import java.util.Optional;
 @DBRider
 @ExtendWith(SpringExtension.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@Mapper
 @MybatisTest
 class UsersMapperTest {
 
@@ -36,52 +39,29 @@ class UsersMapperTest {
 
 
     @Test
-//    @DataSet("dbunit.yml")
-//    @ExpectedDataSet("test.yml")
-    @DataSet(value = "test/tests.yml", cleanAfter = true)
-//    @ExpectedDataSet("test/tests-expected.yml")
-//    @ExpectedDataSet(value = "users.yml")
-//    @DataSet("test.yml")
-//    @ExpectedDataSet("tests-expected.yml")
-//    @Sql(scripts = {"classpath:/selectAll-test.sql"},
-//            executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+    @DataSet(value = "datasets/tests.yml")
     @Transactional
     void selectAllTest() {
-        List<Users> tests = mapper.selectAll();
-        org.assertj.core.api.Assertions.assertThat(tests)
-//                .hasSize(
-//        org.assertj.core.api.Assertions.assertThat(tests).isNotNull();
-//        org.assertj.core.api.Assertions.assertThat(tests.stream().count()).isEqualTo(3L);
-//        mapper.selectAll(tests).ifPresents
-                .hasSize(1)
-                .contains(
-                        new Users(1, "yamashita", "444535")
-                );
-//        List<User> users = mapper.selectAll();
-//        Mockito.doReturn(testUsers).when(mapper).selectAll();
-//        List<User> testUser = service.getAll();
-//        assertEquals(1,testUser.size());
+        List<Products> tests = mapper.selectAll();
+        org.assertj.core.api.Assertions.assertThat(tests).containsExactly(
+                new Products(1, "yamashita", "3333"),
+                new Products(2, "nakabayashi", "2222"),
+                new Products(3, "tsukamoto", "4444")
+        );
     }
 
-//    private User createUsers() {
-//        User user = new User(1L, "yamashita", "33282");
-//        user.setId(1L);
-//        user.setUsername("yamashita");
-//        user.setPassword("33282");
-//        return user;
-//    }
 
     @Test
-    @DataSet(value = "test/tests.yml", cleanAfter = true)
+    @DataSet(value = "datasets/tests.yml", cleanAfter = true)
     @Transactional
     void insertTest() {
-        Users newUsers = new Users(1, "yamashita", "33453");
-        mapper.add(newUsers);
+        Products newUsers = new Products(1, "yamashita", "33453");
+        mapper.add(newProducts);
        System.out.println(newUsers);
     }
 
     @Test
-    @DataSet(value = "test/tests.yml", cleanAfter = true)
+    @DataSet(value = "datasets/tests.yml", cleanAfter = true)
     @Transactional
     void selectOneTest() throws Exception {
 //        Mockito.doReturn(Optional.of(user)).when(mapper).selectOne(1L);
@@ -93,7 +73,7 @@ class UsersMapperTest {
     }
 
     @Test
-    @DataSet(value = "test/tests.yml", cleanAfter = true)
+    @DataSet(value = "datasets/tests.yml", cleanAfter = true)
     @Transactional
     void updateTest() throws Exception {
         Users usersUpdate = new Users(1, "yamazaki", "44424");
@@ -102,7 +82,7 @@ class UsersMapperTest {
     }
 
     @Test
-    @DataSet(value = "test/test.yml", cleanAfter = true)
+    @DataSet(value = "datasets/test.yml", cleanAfter = true)
     @Transactional
     void deleteTest() {
         Users deleteUsers = new Users(1, "yamazaki", "333243");

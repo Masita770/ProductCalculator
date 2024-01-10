@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/security")
 public class LoginController {
 
 //    @Autowired
@@ -15,12 +16,12 @@ public class LoginController {
 
     @RequestMapping("/login")
     public String loginView(Model model) {
-        return "login";
+        return "security/login";
     }
 
 
     @GetMapping("/signIn")
     public String success(Model model) {
-        return "signIn";
+        return "security/signIn";
     }
 }

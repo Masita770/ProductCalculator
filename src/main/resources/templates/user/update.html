@@ -13,20 +13,20 @@
     <h1>update form</h1>
     <div th:object="${userUpdate}">
         <div class="form-row mb-4">
-            <label class="control-label">名前</label>
-            <p class="form-control" th:text="*{username}"></p>
+            <label class="control-label">製品名</label>
+            <p class="form-control" th:text="*{product}"></p>
         </div>
         <div class="form-row mb-4">
-            <label class="control-label">年齢</label>
-            <p class="form-control" th:text="*{password}"></p>
+            <label class="control-label">価格</label>
+            <p class="form-control" th:text="*{price}"></p>
         </div>
         <div id="righttext">
-            <a class="btn btn-link" id="linktext" href="/userData/list">一覧画面</a>
+            <a class="btn btn-link" id="linktext" href="/user/list">一覧画面</a>
         </div>
     </div>
     <form th:action="@{/user/edit/{id}(id=*{id})}" th:method="put" th:object="${userUpdate}">
-        <p>名前：<input type="text" th:field="*{username}" /></p>
-        <p>年齢：<input type="text" th:field="*{password}" /></p>
+        <p>製品名：<input type="text" th:field="*{product}" /></p>
+        <p>価格：<input type="text" th:field="*{price}" /></p>
         <input type="submit" value="更新" class="btn btn-primary" href="edit" />
     </form>
 </div>

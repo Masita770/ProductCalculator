@@ -3,16 +3,15 @@ package com.example.controller;
 import java.util.List;
 import java.util.Optional;
 
-//import com.example.service.AccountService;
-import com.example.domain.Users;
+import org.springframework.stereotype.Controller;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.service.UserService;
+import com.example.domain.Products;
 
 @Controller
 @RequestMapping("/user")
@@ -26,37 +25,37 @@ public class UserController {
 
     @RequestMapping("list")
     public String list(Model model) {
-        List<Users> users = service.getAll();
-        model.addAttribute("list", users);
+        List<Products> products = service.getAll();
+        model.addAttribute("list", products);
         return "user/list";
     }
 
     //Read処理
     @GetMapping("user/{id}")
     public String user(@PathVariable("id") Integer id, Model model) throws NotFoundException {
-        Optional<Users> user = service.getListOne(id);
-        user.ifPresentOrElse(inside -> model.addAttribute("user", inside), () ->
-                model.addAttribute("user", user));
+        Optional<Products> product = service.getListOne(id);
+        product.ifPresentOrElse(inside -> model.addAttribute("product", inside), () ->
+                model.addAttribute("product", product));
         return "user/user";
     }
 
 
     @GetMapping("form")
-    public String newUser(@RequestBody(required = false) Model model) {
+    public String newProducts(@RequestBody(required = false) Model model) {
         return "user/form";
     }
     @PostMapping("edit")
-    public String add(@ModelAttribute Users user, BindingResult bindingResult, Model model) {
+    public String add(@ModelAttribute Products products, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
             return "user/edit";
         }
-        service.create(user);
+        service.create(products);
         return "redirect:list";
     }
 
     @GetMapping("update/{id}")
     public String update(@PathVariable("id")Integer id, Model model) {
-        Optional<Users> userUpdate = service.getListOne(id);
+        Optional<Products> userUpdate = service.getListOne(id);
         userUpdate.ifPresentOrElse(inside -> {
             model.addAttribute("userUpdate", inside);
         }, () -> {
@@ -67,21 +66,21 @@ public class UserController {
 
     //Update処理　編集対象指定
     @RequestMapping("/edit/{id}")
-    public String update(@PathVariable("id")Integer id, @ModelAttribute Users user) {
-        user.setId(id);
-        service.update(user);
+    public String update(@PathVariable("id")Integer id, @ModelAttribute Products products) {
+        products.setId(id);
+        service.update(products);
         return "user/edit";
     }
 
     @RequestMapping("deletePause/{id}")
-    public String deleteOne(@PathVariable("id")Integer id, @ModelAttribute Users user, Model model) {
+    public String deleteOne(@PathVariable("id")Integer id, @ModelAttribute Products products, Model model) {
         service.getListOne(id);
-        model.addAttribute("deleteDate", user);
+        model.addAttribute("deleteDate", products);
         return "/user/deletePause";
     }
 
     @GetMapping("delete/{id}")
-    public String delete(@ModelAttribute Users delete) {
+    public String delete(@ModelAttribute Products delete) {
         service.delete(delete);
         return "user/delete";
     }
