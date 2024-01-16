@@ -32,8 +32,8 @@ public interface UserMapper {
     //@Delete("DELETE FROM users WHERE id = #{id}")
     void delete(Products delete);
 
-    Users certificate(Integer id);
+//    Users certificate(Integer id);
 
-    void make(Products products);
+//    void make(Products products);
 }
 

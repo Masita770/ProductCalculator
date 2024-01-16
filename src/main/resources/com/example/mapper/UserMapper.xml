@@ -12,18 +12,11 @@
     <insert id="add" useGeneratedKeys="true" keyProperty="id">
         INSERT into products (p_number, product, category, price) values (#{p_number},#{product},#{category},#{price})
     </insert>
-<!--    <insert id="make" useGeneratedKeys="true" keyProperty="id">-->
-<!--        INSERT into account (username,password) values (#{username},#{password})-->
-<!--    </insert>-->
     <update id="update">
         UPDATE products set
-        p_number = #{p_number}, product = #{product}, category = #{category}, price = #{price}
-        where id = #{id}
+        p_number = #{p_number}, product = #{product}, category = #{category}, price = #{price} where id = #{id}
     </update>
     <delete id="delete">
         DELETE FROM products WHERE id = #{id}
     </delete>
-    <select id="certificate" resultType="com.example.domain.Products">
-        SELECT * FROM products WHERE id = #{id}
-    </select>
 </mapper>
