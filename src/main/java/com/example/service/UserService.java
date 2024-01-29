@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.domain.Products;
+import com.example.domain.Stocks;
 import com.example.domain.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,13 +18,13 @@ public class UserService {
     UserMapper mapper;
 
 
-    public List<Products> getAll() {
+    public List<Stocks> getAll() {
         return mapper.selectAll();
     }
 
     //Read処理
-    public Optional<Products> getListOne(Integer id) {
-        return mapper.selectOne(id);
+    public Optional<Products> getListOne(Integer productId) {
+        return mapper.selectOne(productId);
     }
 
 //    public Optional<User> selectName(String username) {

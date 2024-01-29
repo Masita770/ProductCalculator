@@ -23,14 +23,18 @@
         <th id="price">価格</th>
         <th id="registrationDate">登録日</th>
         <th id="deletedDate">廃番日</th>
+        <th id="stockId"></th>
+        <th id="inventory"></th>
+        <th id="updateDate"></th>
+
     </tr>
     </thead>
     <tbody>
     <tr th:if="${list}" th:each="list : ${list}" th:method="post">
+<!--        <tr th:each="products: ${list.Products}">-->
+        <th th:text="${list.productId}"></th>
 
-        <th th:text="${list.id}"></th>
-
-        <th th:text="${list.p_number}"></th>
+        <th th:text="${list.pNumber}"></th>
 
         <th th:text="${list.product}"></th>
 
@@ -42,7 +46,15 @@
 
         <th th:text="${list.deletedDate}"></th>
 
+        <th th:text="${list.stockId}"></th>
+
+        <th th:text="${list.inventory}"></th>
+
+        <th th:text="${list.updateDate}"></th>
+
         <td><a class="btn btn-outline-primary btn-sm" th:href="@{user/{id}(id=${list.id})}">参照</a></td>
+
+        </tr>
     </tr>
 
     </tbody>
