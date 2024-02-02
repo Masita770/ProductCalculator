@@ -14,11 +14,11 @@ public interface UserMapper {
 
     //全表示（Read処理)
     //@Select("SELECT * FROM users ")
-    List<Stocks> selectAll();
+    List<Products> selectAll();
 
     //一件表示
     //@Select("SELECT id, username, password FROM users WHERE id = #{id}")
-    Optional<Products> selectOne(Long productId);
+    Optional<Products> selectOne(Integer productId);
 
 
     //Insert処理

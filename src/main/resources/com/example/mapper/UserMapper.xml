@@ -5,32 +5,39 @@
 <mapper namespace="com.example.mapper.UserMapper">
     <resultMap id="userMap" type="com.example.domain.Products">
         <id column="productId" property="product_id"/>
-        <result column="p_number" property="pNumber"/>
+        <result column="pNumber" property="p_number"/>
         <result column="product" property="product"/>
         <result column="category" property="category"/>
         <result column="price" property="price"/>
-        <result column="registration_date" property="registrationDate"/>
-        <result column="deleted_date" property="deletedDate"/>
+        <result column="registrationDate" property="registration_date"/>
+        <result column="deletedDate" property="deleted_date"/>
     </resultMap>
     <resultMap id="stocks" type="com.example.domain.Stocks">
-        <id column="stockId" property="stock_id"/>
-        <result column="product_id" property="product_id"/>
+        <id column="stock_id" property="stockId"/>
+        <result column="product_id" property="productId"/>
         <result column="inventory" property="inventory"/>
-        <result column="update_date" property="update_date"/>
+        <result column="update_date" property="updateDate"/>
+        <collection property="productsList" resultMap="userMap"></collection>
     </resultMap>
-    <resultMap id="order" type="com.example.domain.Order">
-        <id column="productId" property="product_id"/>
-        <id column="stocks_id" property="stocks_id"/>
-        <result column="order_number" property="order_number"/>
-        <result column="order_date" property="order_date"/>
-        <result column="receipt_date" property="receipt_date"/>
-        <collection property="stockList" resultMap="stockMap"></collection>
-    </resultMap>
-    
-    <resultMap id="stockMap" type="com.example.domain.Products" autoMapping="true">
-    </resultMap>
-    <select id="selectAll" resultType="com.example.domain.Products"  resultMap="stockMap">
-        SELECT * FROM products INNER JOIN stocks ON products.product_id = stocks.product_id
+
+    <select id="selectAll" resultMap="userMap">
+        SELECT
+            products.product_id,
+            products.p_number,
+            products.product,
+            products.category,
+            products.price,
+            products.registration_date,
+            products.deleted_date,
+            stocks.stock_id,
+            stocks.product_id,
+            stocks.inventory,
+            stocks.update_date
+        FROM
+            products
+        INNER JOIN stocks
+        ON
+            products.product_id = stocks.product_id
     </select>
     <select id="selectOne" resultType="com.example.domain.Products">
         SELECT id, p_number, product, category, price, registration_date, deleted_date FROM products WHERE id = #{id}

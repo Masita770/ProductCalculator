@@ -26,7 +26,7 @@ public class UserController {
 
     @RequestMapping("list")
     public String list(Model model) {
-        List<Stocks> products = service.getAll();
+        List<Products> products = service.getAll();
         model.addAttribute("list", products);
         return "user/list";
     }
@@ -68,7 +68,7 @@ public class UserController {
     //Update処理　編集対象指定
     @RequestMapping("/edit/{id}")
     public String update(@PathVariable("id")Integer productId, @ModelAttribute Products products) {
-        products.setProductId(Long.valueOf(productId));
+        products.setProductId(productId);
         service.update(products);
         return "user/edit";
     }

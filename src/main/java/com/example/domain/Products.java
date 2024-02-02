@@ -13,13 +13,13 @@ import java.util.List;
 @Getter
 @Setter
 public class Products {
-    private Long productId;
-    private String pNumber;
+    private Integer productId;
+    private Integer pNumber;
     private String product;
     private String category;
     private String price;
     private Timestamp registrationDate;
     private Timestamp deletedDate;
-    private List<Stocks> stockList;
+//    private List<Stocks> stockList;
 //    private List<Order> orders;
 }

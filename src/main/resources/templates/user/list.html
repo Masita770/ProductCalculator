@@ -12,10 +12,11 @@
     <title>Hello, world!</title>
 </head>
 <body>
-<h1>Hello, world!</h1>
+<h2>Hello, world!</h2>
 <table class="table">
     <thead>
     <tr>
+
         <th id="id">ID</th>
         <th id="pNumber">品番</th>
         <th id="product">製品</th>
@@ -23,39 +24,41 @@
         <th id="price">価格</th>
         <th id="registrationDate">登録日</th>
         <th id="deletedDate">廃番日</th>
-        <th id="stockId"></th>
-        <th id="inventory"></th>
-        <th id="updateDate"></th>
+        <th id="stockId">あ</th>
+        <th id="inventory">い</th>
+        <th id="updateDate">う</th>
 
     </tr>
     </thead>
     <tbody>
-    <tr th:if="${list}" th:each="list : ${list}" th:method="post">
-<!--        <tr th:each="products: ${list.Products}">-->
-        <th th:text="${list.productId}"></th>
+    <div class="list">
+    <tr class="product" th:each="product : ${list}" th:method="post">
 
-        <th th:text="${list.pNumber}"></th>
+        <th th:text="${product.productId}"></th>
 
-        <th th:text="${list.product}"></th>
+        <th th:text="${product.pNumber}"></th>
 
-        <th th:text="${list.category}"></th>
+        <th th:text="${product.product}"></th>
 
-        <th th:text="${list.price}"></th>
+        <th th:text="${product.category}"></th>
 
-        <th th:text="${list.registrationDate}"></th>
+        <th th:text="${product.price}"></th>
 
-        <th th:text="${list.deletedDate}"></th>
+        <th th:text="${product.registrationDate}"></th>
 
-        <th th:text="${list.stockId}"></th>
+        <th th:text="${product.deletedDate}"></th>
 
-        <th th:text="${list.inventory}"></th>
+        <th th:text="${product.stockId}"></th>
 
-        <th th:text="${list.updateDate}"></th>
+        <th th:text="${product.inventory}"></th>
 
-        <td><a class="btn btn-outline-primary btn-sm" th:href="@{user/{id}(id=${list.id})}">参照</a></td>
+        <th th:text="${product.updateDate}"></th>
+
+        <td><a class="btn btn-outline-primary btn-sm" th:href="@{user/{id}(id=${product.productId})}">参照</a></td>
 
         </tr>
     </tr>
+    </div>
 
     </tbody>
     <div class="text-center">
