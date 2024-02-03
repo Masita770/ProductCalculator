@@ -14,7 +14,7 @@ public interface UserMapper {
 
     //全表示（Read処理)
     //@Select("SELECT * FROM users ")
-    List<Products> selectAll();
+    List<Products> selectAll(Integer productId);
 
     //一件表示
     //@Select("SELECT id, username, password FROM users WHERE id = #{id}")
