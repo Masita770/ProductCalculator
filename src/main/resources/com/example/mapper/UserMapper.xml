@@ -3,26 +3,25 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.UserMapper">
-    <resultMap id="userMap" type="com.example.domain.Products">
-        <id column="productId" property="product_id"/>
-        <result column="pNumber" property="p_number"/>
-        <result column="product" property="product"/>
-        <result column="category" property="category"/>
-        <result column="price" property="price"/>
-        <result column="registrationDate" property="registration_date"/>
-        <result column="deletedDate" property="deleted_date"/>
-    </resultMap>
-    <resultMap id="stocks" type="com.example.domain.Stocks">
-        <id column="stock_id" property="stockId"/>
-        <result column="product_id" property="productId"/>
-        <result column="inventory" property="inventory"/>
-        <result column="update_date" property="updateDate"/>
-        <collection property="productsList" resultMap="userMap"></collection>
+    <resultMap id="stockMap" type="com.example.domain.Products">
+        <id property="id" column="id" />
+        <result property="pNumber" column="p_number" />
+        <result property="product" column="product" />
+        <result property="category" column="category" />
+        <result property="price" column="price" />
+        <result property="registrationDate" column="registration_date" />
+        <result property="deletedDate" column="deleted_date" />
+        <collection property="stockList" ofType="com.example.domain.Stocks">
+            <result property="stockId" column="stock_id" />
+            <result property="productId" column="product_id" />
+            <result property="inventory" column="inventory" />
+            <result property="updateDate" column="update_date" />
+        </collection>
     </resultMap>
 
-    <select id="selectAll" resultMap="userMap">
+    <select id="selectAll" resultMap="stockMap">
         SELECT
-            products.product_id,
+            products.id,
             products.p_number,
             products.product,
             products.category,
@@ -35,9 +34,12 @@
             stocks.update_date
         FROM
             products
-        INNER JOIN stocks
+        INNER JOIN
+            stocks
         ON
-            products.product_id = stocks.product_id
+            products.id = stocks.product_id
+        WHERE
+            products.id = #{id}
     </select>
     <select id="selectOne" resultType="com.example.domain.Products">
         SELECT id, p_number, product, category, price, registration_date, deleted_date FROM products WHERE id = #{id}

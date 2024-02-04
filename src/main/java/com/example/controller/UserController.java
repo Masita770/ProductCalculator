@@ -25,16 +25,16 @@ public class UserController {
 //    AccountService accountService;
 
     @RequestMapping("list")
-    public String list(Model model) {
-        List<Products> products = service.getAll();
+    public String list(Model model, Integer id) {
+        List<Products> products = service.getAll(id);
         model.addAttribute("list", products);
         return "user/list";
     }
 
     //Read処理
     @GetMapping("user/{id}")
-    public String user(@PathVariable("id") Integer productId, Model model) throws NotFoundException {
-        Optional<Products> product = service.getListOne(productId);
+    public String user(@PathVariable("id") Integer id, Model model) throws NotFoundException {
+        Optional<Products> product = service.getListOne(id);
         product.ifPresentOrElse(inside -> model.addAttribute("product", inside), () ->
                 model.addAttribute("product", product));
         return "user/user";
@@ -67,8 +67,8 @@ public class UserController {
 
     //Update処理　編集対象指定
     @RequestMapping("/edit/{id}")
-    public String update(@PathVariable("id")Integer productId, @ModelAttribute Products products) {
-        products.setProductId(productId);
+    public String update(@PathVariable("id")Integer id, @ModelAttribute Products products) {
+        products.setId(id);
         service.update(products);
         return "user/edit";
     }
