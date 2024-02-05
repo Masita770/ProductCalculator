@@ -18,13 +18,13 @@ public class UserService {
     UserMapper mapper;
 
 
-    public List<Products> getAll() {
-        return mapper.selectAll();
+    public List<Products> getAll(Integer id) {
+        return mapper.selectAll(id);
     }
 
     //Read処理
-    public Optional<Products> getListOne(Integer productId) {
-        return mapper.selectOne(productId);
+    public Optional<Products> getListOne(Integer id) {
+        return mapper.selectOne(id);
     }
 
 //    public Optional<User> selectName(String username) {
