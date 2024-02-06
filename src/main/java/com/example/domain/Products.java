@@ -12,14 +12,14 @@ import java.util.List;
 @Getter
 @Setter
 public class Products {
-    private Integer id;
-    private Integer pNumber;
+    private int id;
+    private int pNumber;
     private String product;
     private String category;
     private String price;
     private Timestamp registrationDate;
     private Timestamp deletedDate;
-    private Stocks productId;
+    Stocks stockId;
     private List<Stocks> stockList;
 //    private List<Order> orders;
 }
