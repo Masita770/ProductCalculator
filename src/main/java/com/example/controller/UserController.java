@@ -3,6 +3,7 @@ package com.example.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.domain.Result;
 import com.example.domain.Stocks;
 import org.springframework.stereotype.Controller;
 import org.apache.ibatis.javassist.NotFoundException;
@@ -25,8 +26,8 @@ public class UserController {
 //    AccountService accountService;
 
     @RequestMapping("list")
-    public String list(Model model, Integer id) {
-        List<Products> products = service.getAll(id);
+    public String list(Model model) {
+        List<Products> products = service.getAll();
         model.addAttribute("list", products);
         return "user/list";
     }
