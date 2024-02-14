@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.domain.Products;
+import com.example.domain.Result;
 import com.example.domain.Stocks;
 import com.example.domain.Users;
 import org.apache.ibatis.annotations.Mapper;
@@ -14,7 +15,7 @@ public interface UserMapper {
 
     //全表示（Read処理)
     //@Select("SELECT * FROM users ")
-    List<Products> selectAll(Integer id);
+    List<Products> selectAll();
 
     //一件表示
     //@Select("SELECT id, username, password FROM users WHERE id = #{id}")
