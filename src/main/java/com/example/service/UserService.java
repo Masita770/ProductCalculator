@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.domain.Products;
+import com.example.domain.Result;
 import com.example.domain.Stocks;
 import com.example.domain.Users;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class UserService {
     UserMapper mapper;
 
 
-    public List<Products> getAll(Integer id) {
-        return mapper.selectAll(id);
+    public List<Products> getAll() {
+        return mapper.selectAll();
     }
 
     //Read処理
