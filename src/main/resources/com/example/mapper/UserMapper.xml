@@ -3,6 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.UserMapper">
+
+    <select id="selectAll" resultMap="stockMap">
+        SELECT
+            products.p_number,
+            products.product,
+            products.category,
+            products.price,
+            stocks.inventory,
+        FROM
+            products
+        INNER JOIN
+            stocks
+        ON
+            products.id = stocks.product_id
+
+    </select>
     <resultMap id="stockMap" type="com.example.domain.Products">
         <id property="id" column="id" />
         <result property="pNumber" column="p_number" />
@@ -19,29 +35,7 @@
         </collection>
     </resultMap>
 
-    <select id="selectAll" resultMap="stockMap">
-        SELECT
-            products.id,
-            products.p_number,
-            products.product,
-            products.category,
-            products.price,
-            products.registration_date,
-            products.deleted_date,
-            stocks.stock_id,
-            stocks.product_id,
-            stocks.inventory,
-            stocks.update_date
-        FROM
-            products
-        INNER JOIN
-            stocks
-        ON
-            products.id = stocks.product_id
-        WHERE
-            products.id = #{id}
-    </select>
-    <select id="selectOne" resultType="com.example.domain.Products">
+    <select id="selectOne" resultType="com.example.domain.Result">
         SELECT id, p_number, product, category, price, registration_date, deleted_date FROM products WHERE id = #{id}
     </select>
     <insert id="add" useGeneratedKeys="true" keyProperty="id">
