@@ -5,19 +5,19 @@
 <mapper namespace="com.example.mapper.UserMapper">
 
     <select id="selectAll" resultMap="stockMap">
-        SELECT
-            products.p_number,
-            products.product,
-            products.category,
-            products.price,
-            stocks.inventory,
-        FROM
-            products
-        INNER JOIN
-            stocks
-        ON
-            products.id = stocks.product_id
-
+        SELECT * FROM products INNER JOIN stocks ON products.id = stocks.product_id
+<!--        SELECT-->
+<!--            products.p_number,-->
+<!--            products.product,-->
+<!--            products.category,-->
+<!--            products.price,-->
+<!--            stocks.inventory,-->
+<!--        FROM-->
+<!--            products-->
+<!--        INNER JOIN-->
+<!--            stocks-->
+<!--        ON-->
+<!--            products.id = stocks.product_id-->
     </select>
     <resultMap id="stockMap" type="com.example.domain.Products">
         <id property="id" column="id" />
@@ -25,13 +25,9 @@
         <result property="product" column="product" />
         <result property="category" column="category" />
         <result property="price" column="price" />
-        <result property="registrationDate" column="registration_date" />
-        <result property="deletedDate" column="deleted_date" />
         <collection property="stockList" ofType="com.example.domain.Stocks">
-            <result property="stockId" column="stock_id" />
-            <result property="productId" column="product_id" />
+            <id property="stockId" column="stock_id" />
             <result property="inventory" column="inventory" />
-            <result property="updateDate" column="update_date" />
         </collection>
     </resultMap>
 
