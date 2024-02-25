@@ -19,6 +19,10 @@ public class UserService {
     UserMapper mapper;
 
 
+    public List<Stocks> stockAll() {
+        return mapper.stockAll();
+    }
+
     public List<Products> getAll() {
         return mapper.selectAll();
     }

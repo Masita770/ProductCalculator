@@ -4,34 +4,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.UserMapper">
 
-    <select id="selectAll" resultMap="stockMap">
-        SELECT * FROM products INNER JOIN stocks ON products.id = stocks.product_id
-<!--        SELECT-->
-<!--            products.p_number,-->
-<!--            products.product,-->
-<!--            products.category,-->
-<!--            products.price,-->
-<!--            stocks.inventory,-->
-<!--        FROM-->
-<!--            products-->
-<!--        INNER JOIN-->
-<!--            stocks-->
-<!--        ON-->
-<!--            products.id = stocks.product_id-->
+    <select id="stockAll" resultType="com.example.domain.Stocks">
+        SELECT * FROM stocks
     </select>
-    <resultMap id="stockMap" type="com.example.domain.Products">
+
+    <select id="selectAll" resultMap="stockMap">
+
+        SELECT * FROM products INNER JOIN stocks ON products.id = stocks.product_id
+
+    </select>
+
+    <resultMap type="com.example.domain.Products" id="stockMap">
         <id property="id" column="id" />
         <result property="pNumber" column="p_number" />
         <result property="product" column="product" />
         <result property="category" column="category" />
         <result property="price" column="price" />
-        <collection property="stockList" ofType="com.example.domain.Stocks">
-            <id property="stockId" column="stock_id" />
-            <result property="inventory" column="inventory" />
-        </collection>
+        <collection property="stockList" resultMap="stock" foreignColumn="product_id" />
+    </resultMap>
+    <resultMap type="com.example.domain.Stocks" id="stock" >
+                <id property="stockId" column="stock_id" />
+                <result property="productId" column="product_id" />
+                <result property="stockId" column="stock_id" />
+                <result property="inventory" column="inventory" />
+                <result property="updateDate" column="update_date" />
     </resultMap>
 
-    <select id="selectOne" resultType="com.example.domain.Result">
+    <select id="selectOne" resultMap="stock">
         SELECT id, p_number, product, category, price, registration_date, deleted_date FROM products WHERE id = #{id}
     </select>
     <insert id="add" useGeneratedKeys="true" keyProperty="id">

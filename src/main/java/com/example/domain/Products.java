@@ -1,25 +1,27 @@
 package com.example.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
+import com.example.domain.Stocks;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
+@Data
 public class Products {
-    private int id;
+    private Integer id;
     private String pNumber;
     private String product;
     private String category;
     private String price;
-    private Timestamp registrationDate;
+    private LocalDate registrationDate;
     private Timestamp deletedDate;
-//    Stocks stockId;
-    private List<Stocks> stockList;
-//    private List<Order> orders;
+    Stocks stockList;
 }

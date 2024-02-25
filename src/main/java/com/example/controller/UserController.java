@@ -24,6 +24,12 @@ public class UserController {
 
 //    @Autowired
 //    AccountService accountService;
+    @RequestMapping("stock")
+    public String s(Model model) {
+        List<Stocks> stocks = service.stockAll();
+        model.addAttribute("s", stocks);
+        return "user/stock";
+    }
 
     @RequestMapping("list")
     public String list(Model model) {

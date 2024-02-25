@@ -1,0 +1,19 @@
+package com.example.domain;
+
+
+import lombok.*;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Data
+public class Stocks {
+    private Integer stockId;
+    private Integer productId;
+    private String inventory;
+    private Timestamp updateDate;
+}

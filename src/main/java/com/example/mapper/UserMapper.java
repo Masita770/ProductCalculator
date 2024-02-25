@@ -17,6 +17,8 @@ public interface UserMapper {
     //@Select("SELECT * FROM users ")
     List<Products> selectAll();
 
+    List<Stocks> stockAll();
+
     //一件表示
     //@Select("SELECT id, username, password FROM users WHERE id = #{id}")
     Optional<Products> selectOne(Integer productId);
