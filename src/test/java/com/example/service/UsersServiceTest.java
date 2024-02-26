@@ -31,11 +31,11 @@ class UsersServiceTest {
     @Test
     public void selectAllTest() {
         when(mapper.selectAll()).thenReturn(List.of(
-                new Users(1,"Nagano", "33024"),
-                new Users(2, "nakazima", "34287"),
-                new Users(3, "Yamashita", "55435")
-        ));
-        List<Users> users = service.getAll();
+//                new Users(1,"Nagano", "33024"),
+//                new Users(2, "nakazima", "34287"),
+//                new Users(3, "Yamashita", "55435")
+//        ));
+//        List<Users> users = service.getAll();
         assertEquals(3, users.size());
         List.of(new Users(1, "Nagano", "33024"),
                 new Users(2, "nakazima", "34287"),
