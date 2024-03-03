@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 
@@ -22,13 +22,15 @@
   </tr>
   </thead>
   <tbody>
-  <div th:object="${productOne}">
+  <div th:object="${product}">
 
     <th th:text="*{id}"></th>
 
+    <th th:text="*{pNumber}"></th>
+
     <th th:text="*{product}"></th>
 
-    <th th:text="*{quantity}"></th>
+    <th th:text="*{price}"></th>
 
     <td><a class="btn btn-outline-primary btn-sm" th:href="@{registered/{id}(id=${id})}">参照</a></td>
 
@@ -37,19 +39,21 @@
   </tbody>
 </table>
 
-<form th:action="@{/product/}" th:method="post" th:object="${newOrder}">
+<form th:action="@{/user/edit}" method="post" th:object="${newProducts}">
 
   <label class="form-label">製品</label>
 
+  <label class="form-label">在庫番号</label>
+  <input class="form-control" type="text" name="stocksId">
 
   <label class="control-label">数量</label>
-  <input class="form-control" type="text" name="quantity">
-</form>
+  <input class="form-control" type="text" name="ordersNumber">
 
 <div class="text-center">
-  <input type="submit" value="登録" class="btn btn-primary" href="/product/result" />
-
+  <input type="submit" value="登録" class="btn btn-primary" href="/user/edit" />
+  <a class="btn btn-link" id ="linktext" href="edit" />
 </div>
+</form>
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->

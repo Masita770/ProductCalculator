@@ -10,7 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Data
 public class Stocks {
     private Integer stockId;
     private Integer productId;

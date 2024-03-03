@@ -3,10 +3,7 @@ package com.example.mapper;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.domain.Products;
-import com.example.domain.Result;
-import com.example.domain.Stocks;
-import com.example.domain.Users;
+import com.example.domain.*;
 import org.apache.ibatis.annotations.Mapper;
 
 
@@ -26,7 +23,7 @@ public interface UserMapper {
 
     //Insert処理
     //@Insert("INSERT INTO users (id,username,password) values (#{id},#{username},#{password})")
-    void add(Products products);
+    void add(Orders products);
 
     //Update処理
     //@Update("UPDATE users set username = #{username}, password = #{password} where id = #{id}")

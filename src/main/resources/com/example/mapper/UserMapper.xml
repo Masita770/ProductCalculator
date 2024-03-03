@@ -8,10 +8,10 @@
         SELECT * FROM stocks
     </select>
 
+<!--    <select id="selectAll" resultMap="stockMap">-->
     <select id="selectAll" resultMap="stockMap">
-
-        SELECT * FROM products INNER JOIN stocks ON products.id = stocks.product_id
-
+<!--        SELECT * FROM products INNER JOIN stocks ON products.id = stocks.product_id-->
+        SELECT id, products.p_number, products.product, products.price, stocks.product_id FROM products  INNER JOIN stocks ON products.id = stocks.product_id
     </select>
 
     <resultMap type="com.example.domain.Products" id="stockMap">
@@ -20,7 +20,8 @@
         <result property="product" column="product" />
         <result property="category" column="category" />
         <result property="price" column="price" />
-        <collection property="stockList" resultMap="stock" foreignColumn="product_id" />
+        <association property="stockList" resultMap="stock" />
+<!--        <collection property="stockList" resultMap="stock" foreignColumn="product_id" />-->
     </resultMap>
     <resultMap type="com.example.domain.Stocks" id="stock" >
                 <id property="stockId" column="stock_id" />
@@ -29,16 +30,19 @@
                 <result property="inventory" column="inventory" />
                 <result property="updateDate" column="update_date" />
     </resultMap>
+<!--    <resultMap id="order" type="com.example.domain.Orders">-->
+<!--        <id property="id" column="id" />-->
+<!--        <result property=""-->
+<!--    </resultMap>-->
 
-    <select id="selectOne" resultMap="stock">
+    <select id="selectOne" resultMap="stockMap">
         SELECT id, p_number, product, category, price, registration_date, deleted_date FROM products WHERE id = #{id}
     </select>
     <insert id="add" useGeneratedKeys="true" keyProperty="id">
-        INSERT into products (p_number, product, category, price) values (#{p_number},#{product},#{category},#{price})
+        INSERT into orders (id, stocks_id, orders_number, order_date, receipt_date) values (#{id}, #{stocksId}, #{ordersNumber}, #{orderDate}, #{receiptDate})
     </insert>
     <update id="update">
-        UPDATE products set
-        p_number = #{p_number}, product = #{product}, category = #{category}, price = #{price} where id = #{id}
+        UPDATE products set p_number = #{p_number}, product = #{product}, category = #{category}, price = #{price} where id = #{id}
     </update>
     <delete id="delete">
         DELETE FROM products WHERE id = #{id}

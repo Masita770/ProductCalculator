@@ -3,10 +3,7 @@ package com.example.service;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.domain.Products;
-import com.example.domain.Result;
-import com.example.domain.Stocks;
-import com.example.domain.Users;
+import com.example.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,11 +34,9 @@ public class UserService {
 //    }
 
     //Insert処理
-    public void create(Products products) {
-        // 6/27 追加
-//        User userInfo = new User();
-//        userInfo.setUsername(user.getUsername());
-////        userInfo.setPassword(passwordEncoder.encode(user.getPassword()));
+    public void create(Orders products) {
+//        int productId = products.getId();
+//        products.setId(productId);
         mapper.add(products);
     }
 

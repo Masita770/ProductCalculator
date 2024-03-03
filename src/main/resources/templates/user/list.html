@@ -32,31 +32,33 @@
     </thead>
     <tbody>
     <div class="list">
-    <tr class="product" th:each="product : ${list}" th:method="post">
+    <tr class="product" th:each="product : ${list}" >
 
-<!--        <th th:text="${product.id}"></th>-->
+        <th th:text="${product.id}"></th>
 
-<!--        <th th:text="${product.pNumber}"></th>-->
+        <th th:text="${product.pNumber}"></th>
 
-<!--        <th th:text="${product.product}"></th>-->
+        <th th:text="${product.product}"></th>
 
-<!--        <th th:text="${product.category}"></th>-->
+        <th th:text="${product.category}"></th>
 
-<!--        <th th:text="${product.price}"></th>-->
+        <th th:text="${product.price}"></th>
 
-<!--        <th th:text="${product.registrationDate}"></th>-->
+        <th th:text="${product.registrationDate}"></th>
 
-<!--        <th th:text="${product.deletedDate}"></th>-->
+        <th th:text="${product.deletedDate}"></th>
 
-        <th th:text="${product.productId}"></th>
+        <th th:text="${product.stockList.productId}"></th>
 
-        <th th:text="${product.stockId}"></th>
+<!--        <th th:text="${product.productId}"></th>-->
 
-        <th th:text="${product.inventory}"></th>
+<!--        <th th:text="${product.stockId}"></th>-->
 
-        <th th:text="${product.updateDate}"></th>
+<!--        <th th:text="${product.inventory}"></th>-->
 
-        <td><a class="btn btn-outline-primary btn-sm" th:href="@{user/{id}(id=${product.id})}">参照</a></td>
+<!--        <th th:text="${product.updateDate}"></th>-->
+
+        <td><a class="btn btn-outline-primary btn-sm" th:href="@{orderManagement/{id}(id=${product.id})}">参照</a></td>
 
         </tr>
     </tr>

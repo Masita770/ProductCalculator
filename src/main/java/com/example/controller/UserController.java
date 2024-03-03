@@ -3,6 +3,7 @@ package com.example.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.domain.Orders;
 import com.example.domain.Result;
 import com.example.domain.Stocks;
 import org.springframework.stereotype.Controller;
@@ -26,8 +27,7 @@ public class UserController {
 //    AccountService accountService;
     @RequestMapping("stock")
     public String s(Model model) {
-        List<Stocks> stocks = service.stockAll();
-        model.addAttribute("s", stocks);
+        model.addAttribute("s", service.stockAll());
         return "user/stock";
     }
 
@@ -39,26 +39,28 @@ public class UserController {
     }
 
     //Read処理
-    @GetMapping("user/{id}")
+    @GetMapping("orderManagement/{id}")
     public String user(@PathVariable("id") Integer id, Model model) throws NotFoundException {
         Optional<Products> product = service.getListOne(id);
         product.ifPresentOrElse(inside -> model.addAttribute("product", inside), () ->
                 model.addAttribute("product", product));
-        return "user/user";
+        return "user/orderManagement";
     }
 
 
-    @GetMapping("form")
+    @GetMapping("orderManagement")
     public String newProducts(@RequestBody(required = false) Model model) {
-        return "user/form";
+        return "user/orderManagement";
     }
+    // 3/3 edit遷移がうまく行かない
     @PostMapping("edit")
-    public String add(@ModelAttribute Products products, BindingResult bindingResult, Model model) {
+    public String add(@ModelAttribute Orders products, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
-            return "user/edit";
+//            int products = service.();
+            return "user/list";
         }
         service.create(products);
-        return "redirect:list";
+        return "redirect:edit";
     }
 
     @GetMapping("update/{id}")
