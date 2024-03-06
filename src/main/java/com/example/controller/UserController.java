@@ -48,6 +48,7 @@ public class UserController {
     }
 
 
+    // 処理を作成
     @GetMapping("orderManagement")
     public String newProducts(@RequestBody(required = false) Model model) {
         return "user/orderManagement";
