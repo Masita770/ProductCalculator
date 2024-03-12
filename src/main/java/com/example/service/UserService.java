@@ -33,7 +33,7 @@ public class UserService {
 //        return mapper.selectName(username);
 //    }
 
-    //Insert処理
+    //Insert処理　3/12
     public void create(Orders products) {
 //        int productId = products.getId();
 //        products.setId(productId);
