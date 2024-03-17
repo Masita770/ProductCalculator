@@ -59,6 +59,7 @@
 <!--        <th th:text="${product.updateDate}"></th>-->
 
         <td><a class="btn btn-outline-primary btn-sm" th:href="@{orderManagement/{id}(id=${product.id})}">参照</a></td>
+        <td><a class="btn btn-outline-primary btn-sm" th:href="@{orderForm/{id}(id=${product.order.id})}">参照</a></td>
 
         </tr>
     </tr>
