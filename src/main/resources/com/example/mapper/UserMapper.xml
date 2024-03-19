@@ -21,19 +21,30 @@
         <result property="category" column="category" />
         <result property="price" column="price" />
         <association property="stockList" resultMap="stock" />
+<!--        <association property="orderList" resultMap="order" />-->
 <!--        <collection property="stockList" resultMap="stock" foreignColumn="product_id" />-->
     </resultMap>
     <resultMap type="com.example.domain.Stocks" id="stock" >
-                <id property="stockId" column="stock_id" />
-                <result property="productId" column="product_id" />
-                <result property="stockId" column="stock_id" />
+                <id property="id" column="id" />
+                <result property="product_id" column="product_id" />
                 <result property="inventory" column="inventory" />
-                <result property="updateDate" column="update_date" />
+                <result property="update_date" column="update_date" />
+                <association property="orderList" resultMap="order" />
+    </resultMap>
+    <resultMap id="com.example.domain.Orders" type="order">
+        <id property="id" column="id" />
+        <result property="stocks_id" column="stocks_id" />
+        <result property="orders_number" column="orders_number" />
+        <result property="order_date" column="order_date" />
+        <result property="receipt_date" column="receipt_date" />
     </resultMap>
 <!--    <resultMap id="order" type="com.example.domain.Orders">-->
 <!--        <id property="id" column="id" />-->
 <!--        <result property=""-->
 <!--    </resultMap>-->
+<!--    <select id="stockSelect" resultMap="stock">-->
+<!--        SELECT id, product_id, inventory, update_date FROM stocks WHERE id = #{id}-->
+<!--    </select>-->
 
     <select id="selectOne" resultMap="stockMap">
         SELECT id, p_number, product, category, price, registration_date, deleted_date FROM products WHERE id = #{id}
@@ -48,3 +59,4 @@
         DELETE FROM products WHERE id = #{id}
     </delete>
 </mapper>
+

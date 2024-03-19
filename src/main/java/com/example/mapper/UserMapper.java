@@ -3,7 +3,9 @@ package com.example.mapper;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.domain.*;
+
+import com.example.domain.Products;
+import com.example.domain.Stocks;
 import org.apache.ibatis.annotations.Mapper;
 
 
@@ -14,16 +16,17 @@ public interface UserMapper {
     //@Select("SELECT * FROM users ")
     List<Products> selectAll();
 
-    List<Stocks> stockAll();
+//    List<Stocks> stockAll();
+//    Optional<Stocks> stockSelect(Integer id);
 
     //一件表示
     //@Select("SELECT id, username, password FROM users WHERE id = #{id}")
-    Optional<Products> selectOne(Integer productId);
+    Optional<Products> selectOne(Integer id);
 
 
     //Insert処理
     //@Insert("INSERT INTO users (id,username,password) values (#{id},#{username},#{password})")
-    void add(Orders products);
+    void add(Products products);
 
     //Update処理
     //@Update("UPDATE users set username = #{username}, password = #{password} where id = #{id}")

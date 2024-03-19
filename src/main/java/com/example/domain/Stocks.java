@@ -11,8 +11,8 @@ import java.util.List;
 @Getter
 @Setter
 public class Stocks {
-    private Integer stockId;
-    private Integer productId;
+    private Integer id;
+    private Integer product_id;
     private String inventory;
-    private Timestamp updateDate;
+    private Timestamp update_date;
 }

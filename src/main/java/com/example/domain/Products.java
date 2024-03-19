@@ -24,4 +24,5 @@ public class Products {
     private LocalDate registrationDate;
     private Timestamp deletedDate;
     Stocks stockList;
+    Orders orderList;
 }

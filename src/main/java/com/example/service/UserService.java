@@ -16,9 +16,9 @@ public class UserService {
     UserMapper mapper;
 
 
-    public List<Stocks> stockAll() {
-        return mapper.stockAll();
-    }
+//    public List<Products> stockAll() {
+//        return mapper.stockAll();
+//    }
 
     public List<Products> getAll() {
         return mapper.selectAll();
@@ -34,7 +34,7 @@ public class UserService {
 //    }
 
     //Insert処理
-    public void create(Orders products) {
+    public void create(Products products) {
 //        int productId = products.getId();
 //        products.setId(productId);
         mapper.add(products);
