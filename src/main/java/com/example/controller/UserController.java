@@ -3,9 +3,7 @@ package com.example.controller;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.domain.Orders;
-import com.example.domain.Result;
-import com.example.domain.Stocks;
+
 import org.springframework.stereotype.Controller;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +52,7 @@ public class UserController {
     }
     // 3/3 edit遷移がうまく行かない
     @PostMapping("edit")
-    public String add(@ModelAttribute Orders products, BindingResult bindingResult, Model model) {
+    public String add(@ModelAttribute Products products, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
 //            int products = service.();
             return "user/list";

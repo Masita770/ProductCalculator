@@ -11,7 +11,7 @@
 <!--    <select id="selectAll" resultMap="stockMap">-->
     <select id="selectAll" resultMap="stockMap">
 <!--        SELECT * FROM products INNER JOIN stocks ON products.id = stocks.product_id-->
-        SELECT id, products.p_number, products.product, products.price, stocks.product_id FROM products  INNER JOIN stocks ON products.id = stocks.product_id
+        SELECT products.id, products.p_number, products.product, products.price, stocks.product_id FROM products  INNER JOIN stocks ON products.id = stocks.product_id
     </select>
 
     <resultMap type="com.example.domain.Products" id="stockMap">
