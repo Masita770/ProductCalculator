@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.StocksMapper">
+
+    <select id="stockAll" resultType="com.example.domain.Stocks">
+        SELECT * FROM stocks
+    </select>
+    <select id="stockSelect" resultType="com.example.domain.Stocks">
+            SELECT id, product_id, inventory, update_date FROM stocks WHERE id = #{id}
+    </select>
+</mapper>
+

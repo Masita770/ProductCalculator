@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample</title>
+</head>
+<body>
+<h1>入力フォーム</h1>
+<div th:object="{r}">
+    <div class="form-row">
+        <label class="control-label">ID</label>
+        <p class="form-control" th:text="*{id}"></p>
+    </div>
+</div>
+
+<a class="btn btn-outline-success btn-sm" th:href="@{/user/update/{id}(id=*{id})}">編集</a>
+<a class="btn btn-outline-success btn-sm" th:href="@{/user/deletePause/{id}(id=*{id})}">削除</a>
+</body>
+</html>
