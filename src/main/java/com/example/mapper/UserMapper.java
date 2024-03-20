@@ -23,7 +23,7 @@ public interface UserMapper {
 
     //Insert処理
     //@Insert("INSERT INTO users (id,username,password) values (#{id},#{username},#{password})")
-    void add(Orders products);
+    void add(Products products);
 
     //Update処理
     //@Update("UPDATE users set username = #{username}, password = #{password} where id = #{id}")
