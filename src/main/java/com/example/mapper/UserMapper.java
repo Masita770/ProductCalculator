@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
 
     //全表示（Read処理)
-    //@Select("SELECT * FROM users ")
+    //@Select("SELECT * FROM products ")
     List<Products> selectAll();
 
     List<Stocks> stockAll();
