@@ -61,7 +61,7 @@ public class UserController {
         return "redirect:edit";
     }
 
-    @GetMapping("update/{id}")
+    @PutMapping("update/{id}")
     public String update(@PathVariable("id")Integer id, Model model) {
         Optional<Products> userUpdate = service.getListOne(id);
         userUpdate.ifPresentOrElse(inside -> {
