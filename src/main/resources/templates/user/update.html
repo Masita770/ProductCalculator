@@ -13,6 +13,14 @@
     <h1>update form</h1>
     <div th:object="${userUpdate}">
         <div class="form-row mb-4">
+            <label class="control-label">ID</label>
+            <p class="form-control" th:text="*{id}"></p>
+        </div>
+        <div class="form-row mb-4">
+            <label class="control-label">品番</label>
+            <p class="form-control" th:text="*{pNumber}"></p>
+        </div>
+        <div class="form-row mb-4">
             <label class="control-label">製品名</label>
             <p class="form-control" th:text="*{product}"></p>
         </div>
@@ -24,8 +32,9 @@
             <a class="btn btn-link" id="linktext" href="/user/list">一覧画面</a>
         </div>
     </div>
-    <form th:action="@{/user/edit/{id}(id=*{id})}" th:method="put" th:object="${userUpdate}">
+    <form th:action="@{/user/edit/{id}(id=${id})}" th:method="put" th:object="${userUpdate}">
         <p>製品名：<input type="text" th:field="*{product}" /></p>
+        <p>品番：<input type="text" th:field="*{pNumber}" /></p>
         <p>価格：<input type="text" th:field="*{price}" /></p>
         <input type="submit" value="更新" class="btn btn-primary" href="edit" />
     </form>

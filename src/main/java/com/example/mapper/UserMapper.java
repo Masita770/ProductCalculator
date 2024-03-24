@@ -27,7 +27,7 @@ public interface UserMapper {
 
     //Update処理
     //@Update("UPDATE users set username = #{username}, password = #{password} where id = #{id}")
-    void update(Products update);
+    void update(Integer id);
 
     //Delete処理
     //@Delete("DELETE FROM users WHERE id = #{id}")

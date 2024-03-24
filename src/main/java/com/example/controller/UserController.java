@@ -51,17 +51,18 @@ public class UserController {
         return "user/orderManagement";
     }
     // 3/3 edit遷移がうまく行かない
-    @PostMapping("edit")
+    @PostMapping("/")
     public String add(@ModelAttribute Products products, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
 //            int products = service.();
             return "user/list";
         }
         service.create(products);
-        return "redirect:edit";
+        return "/";
+//        return "redirect:edit";
     }
 
-    @PutMapping("update/{id}")
+    @GetMapping("update/{id}")
     public String update(@PathVariable("id")Integer id, Model model) {
         Optional<Products> userUpdate = service.getListOne(id);
         userUpdate.ifPresentOrElse(inside -> {
@@ -74,9 +75,9 @@ public class UserController {
 
     //Update処理　編集対象指定
     @RequestMapping("/edit/{id}")
-    public String update(@PathVariable("id")Integer id, @ModelAttribute Products products) {
-        products.setId(id);
-        service.update(products);
+    public String update(@PathVariable("id")Integer id) {
+//        products.setId(id);
+        service.update(id);
         return "user/edit";
     }
 

@@ -32,7 +32,7 @@
 
     <th th:text="*{price}"></th>
 
-    <td><a class="btn btn-outline-primary btn-sm" th:href="@{registered/{id}(id=${id})}">参照</a></td>
+    <td><a class="btn btn-outline-primary btn-sm" th:href="@{/user/update/{id}(id=${id})}">更新</a></td>
 
   </div>
 
@@ -41,10 +41,11 @@
 
 <form th:action="@{/user/edit}" method="post" th:object="${newProducts}">
 
+
   <label class="form-label">製品</label>
 
   <label class="form-label">在庫番号</label>
-  <input class="form-control" type="text" name="stocksId">
+  <input class="form-control" type="text" name="stocks_id">
 
   <label class="control-label">数量</label>
   <input class="form-control" type="text" name="ordersNumber">
@@ -53,6 +54,7 @@
   <input type="submit" value="登録" class="btn btn-primary" href="/user/edit" />
   <a class="btn btn-link" id ="linktext" href="edit" />
 </div>
+<!--  <a class="btn btn-outline-success btn-sm" th:href="@{/user/update/{id}(id=*{id})}">編集</a>-->
 </form>
 <!-- Optional JavaScript; choose one of the two! -->
 
@@ -68,70 +70,3 @@
     -->
 </body>
 </html>
-
-
-
-
-<!--<!doctype html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    &lt;!&ndash; Required meta tags &ndash;&gt;-->
-<!--    <meta charset="utf-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--&lt;!&ndash;    <meta name="viewport" content="width=device-width, initial-scale=1.0">&ndash;&gt;-->
-<!--&lt;!&ndash;    <meta name="viewport" content="width=device-width, initial-scale=1">&ndash;&gt;-->
-
-<!--&lt;!&ndash;    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"&ndash;&gt;-->
-<!--&lt;!&ndash;          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">&ndash;&gt;-->
-<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"-->
-<!--          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
-<!--    <h2>登録画面</h2>-->
-<!--<body>-->
-<!--<table class="table">-->
-
-
-<!--    <thead>-->
-<!--        <tr>-->
-<!--            <th scope="col">在庫一覧</th>-->
-<!--        </tr>-->
-<!--    </thead>-->
-
-<!--    <div class="container">-->
-
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th id="id">ID</th>-->
-<!--            <th id="product">製品</th>-->
-<!--            <th id="quantity">数量</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--    </div>-->
-<!--    <tbody>-->
-<!--</table>-->
-<!--    <div th:object="${request}">-->
-<!--        <tr class="mb-6">-->
-<!--            <th th:text="*{id}"></th>-->
-<!--            <th th:text="*{product}"></th>-->
-<!--            <th th:text="*{quantity}"></th>-->
-<!--        </tr>-->
-<!--    </div>-->
-<!--    </tbody>-->
-<!--    <form th:action="@{/product/result}" th:method="post" th:object="${newOrder}">-->
-
-<!--                <label class="form-label"></label>-->
-<!--                <input class="form-control" type="text" name="product">-->
-
-<!--                <label class="control-label">数量</label>-->
-<!--                <input class="form-control" type="text" name="quantity">-->
-<!--    </form>-->
-
-<!--        <div class="text-center">-->
-<!--            <input type="submit" value="登録" class="btn btn-primary" href="/product/result" />-->
-
-<!--        </div>-->
-
-
-<!--</div>-->
-<!--        <div id="righttext"> <a class="btn btn-link" id ="linktext" href="list">一覧画面</a></div>-->
-<!--    </table>-->
-<!--</body>-->
