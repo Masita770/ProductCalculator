@@ -15,4 +15,5 @@ public class Stocks {
     private Integer productId;
     private String inventory;
     private Timestamp updateDate;
+    Orders orderList;
 }
