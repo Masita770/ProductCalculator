@@ -75,9 +75,9 @@ public class UserController {
 
     //Update処理　編集対象指定
     @RequestMapping("/edit/{id}")
-    public String update(@PathVariable("id")Integer id) {
-//        products.setId(id);
-        service.update(id);
+    public String update(@PathVariable("id")Integer id, @ModelAttribute Products products) {
+        products.setId(id);
+        service.update(products);
         return "user/edit";
     }
 
