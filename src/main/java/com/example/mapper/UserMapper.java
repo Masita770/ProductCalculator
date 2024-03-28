@@ -27,14 +27,12 @@ public interface UserMapper {
 
     //Update処理
     //@Update("UPDATE users set username = #{username}, password = #{password} where id = #{id}")
-    void update(Integer id);
+    void update(Products products);
 
     //Delete処理
     //@Delete("DELETE FROM users WHERE id = #{id}")
     void delete(Products delete);
 
-//    Users certificate(Integer id);
-
-//    void make(Products products);
+    Optional<Products> resultOne();
 }
 
