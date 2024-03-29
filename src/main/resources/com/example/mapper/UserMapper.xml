@@ -27,6 +27,18 @@
         DELETE FROM products WHERE id = #{id}
     </delete>
 
+<!--    <select id="resultOne" resultType="stockMap">-->
+<!--&lt;!&ndash;        SELECT * FROM products INNER JOIN &ndash;&gt;-->
+<!--        SELECT-->
+<!--            products.id, products.p_number, products.product, products.price, stocks.product_id,-->
+<!--            orders.id, orders.stocks_id-->
+<!--        FROM products-->
+<!--        INNER JOIN stocks ON-->
+<!--            products.id = stocks.product_id-->
+<!--        INNER JOIN orders ON-->
+<!--            stocks.product_id = orders.stocks_id-->
+<!--    </select>-->
+
     <resultMap type="com.example.domain.Products" id="stockMap">
         <id property="id" column="id" />
         <result property="pNumber" column="p_number" />
@@ -41,9 +53,13 @@
         <result property="productId" column="product_id" />
         <result property="inventory" column="inventory" />
         <result property="updateDate" column="update_date" />
+        <association property="orderList" resultMap="order" />
     </resultMap>
-    <!--    <resultMap id="order" type="com.example.domain.Orders">-->
-    <!--        <id property="id" column="id" />-->
-    <!--        <result property=""-->
-    <!--    </resultMap>-->
+        <resultMap id="order" type="com.example.domain.Orders">
+            <id property="id" column="id" />
+            <result property="stocksId" column="stocks_id" />
+            <result property="ordersNumber" column="orders_number" />
+            <result property="orderDate" column="order_date" />
+            <result property="receiptDate" column="receipt_date" />
+        </resultMap>
 </mapper>
