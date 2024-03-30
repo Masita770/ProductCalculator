@@ -41,8 +41,8 @@ public class UserService {
     }
 
     //Update処理
-    public void update(Integer id) {
-        mapper.update(id);
+    public void update(Products products) {
+        mapper.update(products);
     }
 
     //Delete処理
