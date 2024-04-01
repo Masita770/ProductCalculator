@@ -39,20 +39,29 @@
   </tbody>
 </table>
 
-<form th:action="@{/user/edit}" method="post" th:object="${newProducts}">
+<form th:action="@{/user/orderEdit}" method="post" th:object="${newOrder}">
+  <div class="row">
+    <div class="form-group col-3 m-2">
+      <label for="stocksId"></label>
+      <select id="stocksId" name="stocksId" class="form-select col-2" th:value="${orders.stocksId}">
+        <option></option>
+        <option value="1" th:selected="${orders.stocksId} == 2"></option>
+      </select>
+    </div>
+  </div>
 
 
   <label class="form-label">製品</label>
 
   <label class="form-label">在庫番号</label>
-  <input class="form-control" type="text" name="stocks_id">
+  <input class="form-control" type="text" name="stocksId">
 
   <label class="control-label">数量</label>
   <input class="form-control" type="text" name="ordersNumber">
 
 <div class="text-center">
-  <input type="submit" value="登録" class="btn btn-primary" href="/user/edit" />
-  <a class="btn btn-link" id ="linktext" href="edit" />
+  <input type="submit" value="登録" class="btn btn-primary" href="/user/orderEdit" />
+  <a class="btn btn-link" id ="linktext" href="user/orderEdit" />
 </div>
 <!--  <a class="btn btn-outline-success btn-sm" th:href="@{/user/update/{id}(id=*{id})}">編集</a>-->
 </form>

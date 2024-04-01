@@ -46,21 +46,21 @@ public class UserController {
     }
 
 
-    @GetMapping("orderManagement")
-    public String newProducts(@RequestBody(required = false) Model model) {
-        return "user/orderManagement";
-    }
-    // 3/3 edit遷移がうまく行かない
-    @PostMapping("/")
-    public String add(@ModelAttribute Products products, BindingResult bindingResult, Model model) {
-        if(bindingResult.hasErrors()) {
-//            int products = service.();
-            return "user/list";
-        }
-        service.create(products);
-        return "/";
-//        return "redirect:edit";
-    }
+//    @GetMapping("orderManagement")
+//    public String newProducts(@RequestBody(required = false) Model model) {
+//        return "user/orderManagement";
+//    }
+//    // 3/3 edit遷移がうまく行かない
+//    @PostMapping("orderManagement")
+//    public String add(@ModelAttribute Products products, BindingResult bindingResult, Model model) {
+//        if(bindingResult.hasErrors()) {
+////            int products = service.();
+//            return "user/list";
+//        }
+//        service.create(products);
+//        return "/";
+////        return "redirect:edit";
+//    }
 
     @GetMapping("update/{id}")
     public String update(@PathVariable("id")Integer id, Model model) {
