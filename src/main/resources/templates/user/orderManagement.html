@@ -33,6 +33,7 @@
     <th th:text="*{price}"></th>
 
     <td><a class="btn btn-outline-primary btn-sm" th:href="@{/user/update/{id}(id=${id})}">更新</a></td>
+    <td><a class="btn btn-outline-primary btn-sm" th:href="@{/user/search}">発注</a></td>
 
   </div>
 
@@ -42,12 +43,12 @@
 <form th:action="@{/user/orderEdit}" method="post" th:object="${newOrder}">
   <div class="row">
     <div class="form-group col-3 m-2">
-      <label for="stocksId"></label>
+<!--      <label for="stocksId"></label>-->
 <!--      <select th:field=""-->
-      <select id="stocksId" name="stocksId" class="form-select col-2" th:object="${o}">
+<!--      <select id="stocksId" name="stocksId" class="form-select col-2" th:object="${o}">-->
       <!--      <select id="stocksId" name="stocksId" class="form-select col-2" th:value="${orders.stocksId}">-->
         <option></option>
-        <option value="3" th:selected="*{stocksId} == stocksId"></option>
+<!--        <option value="3" th:selected="*{stocksId} == stocksId"></option>-->
       </select>
     </div>
   </div>
