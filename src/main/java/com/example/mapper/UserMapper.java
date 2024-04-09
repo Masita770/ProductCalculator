@@ -33,6 +33,11 @@ public interface UserMapper {
     //@Delete("DELETE FROM users WHERE id = #{id}")
     void delete(Products delete);
 
-    Optional<Products> resultOne();
+//    Optional<Products> resultOne();
+
+
+    List<Products> resultOne(int stocksId);
+
+    List<Products> orderAll();
 }
 

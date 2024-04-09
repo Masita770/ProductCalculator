@@ -12,9 +12,9 @@ import java.util.Optional;
 @Mapper
 public interface OrderMapper {
 
-    List<Stocks> orderAll();
-
-    List<Orders> resultOne(int stocksId);
-
-    void addOrder(Orders orders);
+//    List<Stocks> orderAll();
+//
+//    List<Orders> resultOne(int stocksId);
+//
+//    void addOrder(Orders orders);
 }
