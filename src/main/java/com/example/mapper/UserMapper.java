@@ -36,7 +36,7 @@ public interface UserMapper {
 //    Optional<Products> resultOne();
 
 
-    List<Products> resultOne(int stocksId);
+    Optional<Products> resultOne(int stocksId);
 
     List<Products> orderAll();
 }
