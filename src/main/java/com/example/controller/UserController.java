@@ -37,7 +37,7 @@ public class UserController {
     }
 
     //Read処理
-    @GetMapping("orderManagement/{id}")
+    @GetMapping("orderManagement/{id}") //
     public String user(@PathVariable("id") Integer id, Model model) throws NotFoundException {
         Optional<Products> product = service.getListOne(id);
         product.ifPresentOrElse(inside -> model.addAttribute("product", inside), () ->
