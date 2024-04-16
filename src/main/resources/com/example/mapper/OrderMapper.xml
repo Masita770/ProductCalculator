@@ -3,14 +3,37 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.mapper.OrderMapper">
-    <select id="resultAll" resultType="com.example.domain.Orders">
-        SELECT * FROM orders
-    </select>
-    <select id="resultOne" resultType="com.example.domain.Orders">
-<!--        SELECT * FROM orders WHERE stocks_id = #{stocks_id}-->
-        SELECT * FROM orders WHERE stocks_id in (stocks_id)
-    </select>
-    <insert id="addOrder" useGeneratedKeys="true" keyProperty="id">
-        INSERT into orders (id, stocks_id, orders_number, order_date, receipt_date) values (#{id}, #{stocksId}, #{ordersDate}, #{receiptDate})
-    </insert>
+<!--    <select id="orderAll" resultMap="stock">-->
+<!--        SELECT * FROM stocks INNER JOIN orders-->
+<!--    </select>-->
+<!--    <select id="resultOne" resultType="com.example.domain.Orders">-->
+<!--&lt;!&ndash;        SELECT * FROM orders WHERE stocks_id = #{stocks_id}&ndash;&gt;-->
+<!--        SELECT * FROM orders WHERE stocks_id in (stocks_id)-->
+<!--    </select>-->
+<!--    <insert id="addOrder" useGeneratedKeys="true" keyProperty="id">-->
+<!--        INSERT into orders (id, stocks_id, orders_number, order_date, receipt_date) values (#{id}, #{stocksId}, #{ordersDate}, #{receiptDate})-->
+<!--    </insert>-->
+
+<!--    <resultMap type="com.example.domain.Products" id="stockMap">-->
+<!--        <id property="id" column="id" />-->
+<!--        <result property="pNumber" column="p_number" />-->
+<!--        <result property="product" column="product" />-->
+<!--        <result property="category" column="category" />-->
+<!--        <result property="price" column="price" />-->
+<!--        <association property="stockList" resultMap="stock" />-->
+<!--    </resultMap>-->
+<!--    <resultMap type="com.example.domain.Stocks" id="stock" >-->
+<!--        <id property="id" column="id" />-->
+<!--        <result property="productId" column="product_id" />-->
+<!--        <result property="inventory" column="inventory" />-->
+<!--        <result property="updateDate" column="update_date" />-->
+<!--        <association property="orderList" resultMap="order" />-->
+<!--    </resultMap>-->
+<!--    <resultMap id="order" type="com.example.domain.Orders">-->
+<!--        <id property="id" column="id" />-->
+<!--        <result property="stocksId" column="stocks_id" />-->
+<!--        <result property="ordersNumber" column="orders_number" />-->
+<!--        <result property="orderDate" column="order_date" />-->
+<!--        <result property="receiptDate" column="receipt_date" />-->
+<!--    </resultMap>-->
 </mapper>
