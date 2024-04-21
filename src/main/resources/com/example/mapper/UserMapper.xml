@@ -16,9 +16,12 @@
 
     <select id="selectOne" resultMap="stockMap">
         SELECT id, p_number, product, category, price, registration_date, deleted_date FROM products WHERE id = #{id}
+<!--        SELECT products.id, products.p_number, products.product, products.price, stocks.product_id, orders.stocks_id, orders.orders_number FROM products INNER JOIN stocks ON products.id = stocks.product_id-->
+<!--        INNER JOIN orders ON stocks.product_id = orders.stocks_id WHERE orders.stocks_id = #{stocksId}-->
     </select>
     <insert id="add" useGeneratedKeys="true" keyProperty="id">
-        INSERT into products (id, p_number, product, category, price) values (#{id}, #{pNumber}, #{category}, #{price})
+<!--        INSERT into products (id, p_number, product, category, price) values (#{id}, #{pNumber}, #{category}, #{price})-->
+        INSERT into orders(id, stocks_id, orders_number, order_date, receipt_date) values (#{id}, #{stocksId}, #{ordersNumber}, #{orderDate}, #{receiptDate})
     </insert>
     <update id="update">
         UPDATE products set p_number = #{pNumber}, product = #{product}, category = #{category}, price = #{price} where id = #{id}

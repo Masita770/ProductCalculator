@@ -45,28 +45,30 @@
   <div th:object="${product}">
   <div class="row">
     <div class="form-group col-3 m-2">
-<!--      <label for="stocksId"></label>-->
-<!--      <select th:field=""-->
-<!--      <select id="stocksId" name="stocksId" class="form-select col-2" th:object="${o}">-->
-      <!--      <select id="stocksId" name="stocksId" class="form-select col-2" th:value="${orders.stocksId}">-->
-        <option></option>
-<!--        <option value="3" th:selected="*{stocksId} == stocksId"></option>-->
-      </select>
+      <label class="form-label">製品</label>
+
+      <label class="form-label">在庫番号</label>
+      <input class="form-control" type="text" name="stocksId">
+      <!--  <input class="form-control" th:fragment="frag(stocksId)" th:with="stocksId=${stocksId}" ></input>-->
+      <label class="control-label">数量</label>
+      <input class="form-control" type="text" name="ordersNumber" th:value="1" max="10">
+    </div>
     </div>
   </div>
-  </div>
+<!--  </div>-->
 
 
-  <label class="form-label">製品</label>
+<!--  <label class="form-label">製品</label>-->
 
-  <label class="form-label">在庫番号</label>
-  <input class="form-control" type="text" name="stocksId">
-<!--  <input class="form-control" th:fragment="frag(stocksId)" th:with="stocksId=${stocksId}" ></input>-->
-  <label class="control-label">数量</label>
-  <input class="form-control" type="text" name="ordersNumber">
+<!--  <label class="form-label">在庫番号</label>-->
+<!--  <input class="form-control"  type="text" name="stocksId" th:value="*{stocksId}">-->
+<!--&lt;!&ndash;  <input class="form-control" th:fragment="frag(stocksId)" th:with="stocksId=${stocksId}" ></input>&ndash;&gt;-->
+<!--  <label class="control-label">数量</label>-->
+<!--  <input class="form-control" type="text" name="ordersNumber" th:value="">-->
+<!--  </div>-->
 
 <div class="text-center">
-  <input type="submit" value="登録" class="btn btn-primary" href="/user/orderEdit" />
+  <input type="submit" value="注文" class="btn btn-primary" href="/user/orderEdit" />
   <a class="btn btn-link" id ="linktext" href="user/orderEdit" />
 </div>
 <!--  <a class="btn btn-outline-success btn-sm" th:href="@{/user/update/{id}(id=*{id})}">編集</a>-->
