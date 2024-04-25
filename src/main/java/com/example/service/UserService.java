@@ -34,7 +34,7 @@ public class UserService {
 //    }
 
     //Insert処理 4/18
-    public void create(Products products) {
+    public void create(Orders products) {
 //        int productId = products.getId();
 //        products.setId(productId);
         mapper.add(products);
