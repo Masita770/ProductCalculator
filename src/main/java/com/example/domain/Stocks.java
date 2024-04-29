@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-//
+
 public class Stocks {
     private Integer id;
     private Integer productId;
