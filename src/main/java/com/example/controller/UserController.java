@@ -60,7 +60,11 @@ public class UserController {
         }
         service.create(products);
 //        return "/";
-        return "redirect:list";
+        return "redirect:orderEdit";
+    }
+    @GetMapping("orderEdit")
+    public String t() {
+        return "user/orderEdit";
     }
 
     @GetMapping("update/{id}")
