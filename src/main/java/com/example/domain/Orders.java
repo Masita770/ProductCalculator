@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @Data
+//
 public class Orders {
     private Integer id;
     private int stocksId;
