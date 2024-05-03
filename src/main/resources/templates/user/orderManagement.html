@@ -34,7 +34,7 @@
     <th th:text="*{price}"></th>
 
     <td><a class="btn btn-outline-primary btn-sm" th:href="@{/user/update/{id}(id=${id})}">更新</a></td>
-    <td><a class="btn btn-outline-primary btn-sm" th:href="@{/user/search}">発注</a></td>
+    <td><a class="btn btn-outline-primary btn-sm" th:href="@{/user/orderEdit}">発注</a></td>
 
   </div>
 
@@ -52,6 +52,8 @@
       <!--  <input class="form-control" th:fragment="frag(stocksId)" th:with="stocksId=${stocksId}" ></input>-->
       <label class="control-label">数量</label>
       <input class="form-control" type="text" name="ordersNumber" th:value="1" max="10">
+      <input class="form-control" type="date" name="deliveryDate">
+      <label class="control-label">引き渡し予定日</label>>
     </div>
     </div>
   </div>
@@ -69,7 +71,6 @@
 
 <div class="text-center">
   <input type="submit" value="注文" class="btn btn-primary" href="/user/orderEdit" />
-<!--  <a class="btn btn-link" id ="linktext" href="user/orderEdit" />-->
 </div>
 <!--  <a class="btn btn-outline-success btn-sm" th:href="@{/user/update/{id}(id=*{id})}">編集</a>-->
 </form>
