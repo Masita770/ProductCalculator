@@ -11,7 +11,6 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @Data
-//
 public class Orders {
     private Integer id;
     private int stocksId;
@@ -19,5 +18,6 @@ public class Orders {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Timestamp orderDate;
-    private Timestamp receiptDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Timestamp deliveryDate;
 }
