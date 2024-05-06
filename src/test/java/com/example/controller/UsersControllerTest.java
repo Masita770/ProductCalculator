@@ -1,8 +1,7 @@
 package com.example.controller;
 
 
-import com.example.domain.Users;
-import com.example.service.UserService;
+import com.example.service.ProductService;
 import org.junit.jupiter.api.Test;
 
 import org.mockito.*;
@@ -27,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc
 //@Profile("UserControllerTest")
-@WebMvcTest(value = UserController.class)
+@WebMvcTest(value = ProductController.class)
 class UsersControllerTest {
 
 
@@ -38,10 +37,10 @@ class UsersControllerTest {
     Users users;
 
     @MockBean
-    private UserService service;
+    private ProductService service;
 
     @InjectMocks
-    UserController controller;
+    ProductController controller;
 
 //    @BeforeEach
 //    private void setup() {

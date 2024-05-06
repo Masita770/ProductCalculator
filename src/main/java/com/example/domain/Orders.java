@@ -4,9 +4,8 @@ package com.example.domain;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Time;
+import java.sql.Date;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,8 +17,8 @@ public class Orders {
     private int stocksId;
     private int ordersNumber;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     private Timestamp orderDate;
     @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private Timestamp deliveryDate;
+    private Date deliveryDate;
 }

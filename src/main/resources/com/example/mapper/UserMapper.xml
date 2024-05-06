@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mapper.UserMapper">
+<mapper namespace="com.example.mapper.ProductMapper">
 
     <select id="stockAll" resultType="com.example.domain.Stocks">
         SELECT * FROM stocks
@@ -21,7 +21,7 @@
     </select>
     <insert id="add" useGeneratedKeys="true" keyProperty="id">
 <!--        INSERT into products (id, p_number, product, category, price) values (#{id}, #{pNumber}, #{category}, #{price})-->
-        INSERT into orders(id, stocks_id, orders_number, order_date, receipt_date) values (#{id}, #{stocksId}, #{ordersNumber}, #{orderDate}, #{receiptDate})
+        INSERT into orders(id, stocks_id, orders_number, order_date, delivery_date) values (#{id}, #{stocksId}, #{ordersNumber}, #{orderDate}, #{deliveryDate}
     </insert>
     <update id="update">
         UPDATE products set p_number = #{pNumber}, product = #{product}, category = #{category}, price = #{price} where id = #{id}
@@ -63,6 +63,6 @@
             <result property="stocksId" column="stocks_id" />
             <result property="ordersNumber" column="orders_number" />
             <result property="orderDate" column="order_date" />
-            <result property="receiptDate" column="receipt_date" />
+            <result property="deliveryDate" column="delivery_date" />
         </resultMap>
 </mapper>
