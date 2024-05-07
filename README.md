@@ -3,6 +3,9 @@
  
 在庫管理を円滑にするためのアプリです。
 
+# 作成経緯
+発注
+
 # 使用技術
 Java 11  
 Spring Boot 3.0.5  
@@ -48,12 +51,3 @@ python demo.py
 * 作成者
 * 所属
 * E-mail
- 
-# License
-ライセンスを明示する
- 
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
- 
-社内向けなら社外秘であることを明示してる
- 
-"hoge" is Confidential.
