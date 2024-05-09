@@ -17,7 +17,7 @@ public class Orders {
     private int stocksId;
     private int ordersNumber;
 
-//
+
     private Timestamp orderDate;
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Date deliveryDate;
