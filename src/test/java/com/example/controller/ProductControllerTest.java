@@ -3,7 +3,6 @@ package com.example.controller;
 
 import com.example.service.ProductService;
 import org.junit.jupiter.api.Test;
-
 import org.mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,16 +17,14 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Optional;
 
-import static org.hamcrest.Matchers.is;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
 @AutoConfigureMockMvc
 //@Profile("UserControllerTest")
 @WebMvcTest(value = ProductController.class)
-class UsersControllerTest {
+class ProductControllerTest {
 
 
     @Autowired
