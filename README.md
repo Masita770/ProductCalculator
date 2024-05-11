@@ -7,10 +7,18 @@
 Java 11  
 Spring Boot 3.0.5  
 MySQL 5.7.33
- 
+
+# データベース関係
+
+products
+プライマリーキー : id
+stocks
+プライマリーキー : product_id
+orders
+プライマリーキー : stocks_id
 # Features
  
-"hoge"のセールスポイントや差別化などを説明する
+
  
 # Requirement
  
