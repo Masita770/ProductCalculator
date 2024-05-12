@@ -21,7 +21,6 @@ MySQL 5.7.33
 |price            |varchar(256)    |                |
 |registration_date|timestamp       |                |
 |deleded_date     |timestamp       |                |
-|-----------------|----------------|----------------|
 
 
  
