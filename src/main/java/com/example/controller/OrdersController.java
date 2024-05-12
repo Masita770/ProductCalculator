@@ -29,7 +29,7 @@ public class OrdersController {
     public String newProducts(@RequestBody(required = false) @ModelAttribute Products products) {
         return "product/orderManagement";
     }
-    // 3/3 edit遷移がうまく行かない
+
     @PostMapping("orderEdit")
     public String add(@ModelAttribute Orders products, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
