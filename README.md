@@ -13,8 +13,11 @@ MySQL 5.7.33
  
 # テーブル定義
 # productsテーブル
-|id|p_number|product|category|price|registration_date|deleded_date|
-|------|----|-------|
+|列名|データ・タイプ|オートインクメント|キー|
+|id|int(11)|Auto_increment|
+p_number|product|category|price|registration_date|deleded_date|
+|--|--------|-------|--------|-----|-----------------|------------|
+
  
 # Requirement
  
