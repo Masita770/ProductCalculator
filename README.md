@@ -33,45 +33,21 @@ MySQL 5.7.33
 |id               |int(11)         |Auto_increment  |
 |-----------------|----------------|----------------|
 |stocks_id        |int(11)         |                |
-|product          |varchar(256)    |                |
-|category         |varchar(100)    |                |
-|price            |varchar(256)    |                |
-|registration_date|timestamp       |                |
-|deleded_date     |timestamp       |                |
+|orders_number    |int(11)         |                |
+|order_date       |char(100)       |                |
+|delivery_date    |date            |                |
 
 # Requirement
  
-"hoge"を動かすのに必要なライブラリなどを列挙する
- 
-* huga 3.5.2
-* hogehuga 1.0.2
+
  
 # Installation
  
-Requirementで列挙したライブラリなどのインストール方法を説明する
- 
-```bash
-pip install huga_package
-```
+
  
 # Usage
  
-DEMOの実行方法など、"hoge"の基本的な使い方を説明する
- 
-```bash
-git clone https://github.com/hoge/~
-cd examples
-python demo.py
-```
- 
+
 # Note
  
-注意点などがあれば書く
  
-# Author
- 
-作成情報を列挙する
- 
-* 作成者
-* 所属
-* E-mail
