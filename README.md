@@ -14,6 +14,7 @@ MySQL 5.7.33
 # テーブル定義
 # productsテーブル
 |id               |int(11)         |Auto_increment  |
+|-----------------|----------------|----------------|
 |p_number         |varchar8256)    |                |
 |product          |varchar(256)    |                |
 |category|        |varchar(100)    |                |
