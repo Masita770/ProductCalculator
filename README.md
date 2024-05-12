@@ -12,7 +12,7 @@ Spring Boot 3.0.5
 MySQL 5.7.33
  
 # テーブル定義
-##productsテーブル
+## productsテーブル
 |id               |int(11)         |Auto_increment  |
 |-----------------|----------------|----------------|
 |p_number         |varchar8256)    |                |
@@ -22,14 +22,14 @@ MySQL 5.7.33
 |registration_date|timestamp       |                |
 |deleded_date     |timestamp       |                |
 
-##stocksテーブル
+## stocksテーブル
 |id               |int(11)         |Auto_increment  |
 |-----------------|----------------|----------------|
 |product_id       |int(11)         |                |
 |inventory        |char(100)       |                |
 |update_date      |timestamp       |                |
 
-##ordersテーブル
+## ordersテーブル
 |id               |int(11)         |Auto_increment  |
 |-----------------|----------------|----------------|
 |stocks_id        |int(11)         |                |
