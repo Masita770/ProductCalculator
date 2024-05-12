@@ -29,6 +29,9 @@ MySQL 5.7.33
 |inventory        |char(100)       |                |
 |update_date      |timestamp       |                |
 
+外部キー
+|
+
 ## ordersテーブル
 |id               |int(11)         |Auto_increment  |
 |-----------------|----------------|----------------|
@@ -36,6 +39,8 @@ MySQL 5.7.33
 |orders_number    |int(11)         |                |
 |order_date       |char(100)       |                |
 |delivery_date    |date            |                |
+
+![image](https://
 
 # Requirement
  
