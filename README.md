@@ -17,7 +17,7 @@ MySQL 5.7.33
 |-----------------|----------------|----------------|
 |p_number         |varchar8256)    |                |
 |product          |varchar(256)    |                |
-|category|        |varchar(100)    |                |
+|category         |varchar(100)    |                |
 |price            |varchar(256)    |                |
 |registration_date|timestamp       |                |
 |deleded_date     |timestamp       |                |
