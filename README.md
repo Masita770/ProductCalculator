@@ -11,9 +11,10 @@ Java 11
 Spring Boot 3.0.5  
 MySQL 5.7.33
  
-# Features
- 
-"hoge"のセールスポイントや差別化などを説明する
+# テーブル定義
+# productsテーブル
+|id|p_number|product|category|price|registration_date|deleded_date|
+|------|----|-------|
  
 # Requirement
  
