@@ -43,6 +43,7 @@ MySQL 5.7.33
 |delivery_date    |date            |                |
 
 ![productcalculator - orders](https://github.com/Masita770/ProductCalculator/assets/79049301/612e7689-9b3c-41cd-aca9-1f360fa6bb20)
+![productcalculator - stocks](https://github.com/Masita770/ProductCalculator/assets/79049301/64038fe8-9463-43ee-a2c4-02f112efd42d)
 
 
 # Requirement
