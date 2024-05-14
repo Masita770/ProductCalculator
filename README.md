@@ -42,7 +42,8 @@ MySQL 5.7.33
 |order_date       |char(100)       |                |
 |delivery_date    |date            |                |
 
-![image](https://
+![productcalculator - orders](https://github.com/Masita770/ProductCalculator/assets/79049301/612e7689-9b3c-41cd-aca9-1f360fa6bb20)
+
 
 # Requirement
  
