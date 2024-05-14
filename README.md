@@ -24,8 +24,9 @@ MySQL 5.7.33
 |deleded_date     |timestamp       |                |
 
 ## stocksテーブル
-|id               |int(11)         |Auto_increment  |
+|列名             |データ型         |備考            |
 |-----------------|----------------|----------------|
+|id               |int(11)         |Auto_increment  |
 |product_id       |int(11)         |                |
 |inventory        |char(100)       |                |
 |update_date      |timestamp       |                |
@@ -33,8 +34,9 @@ MySQL 5.7.33
 
 
 ## ordersテーブル
-|id               |int(11)         |Auto_increment  |
+|列名             |データ型         |備考            | 
 |-----------------|----------------|----------------|
+|id               |int(11)         |Auto_increment  |
 |stocks_id        |int(11)         |                |
 |orders_number    |int(11)         |                |
 |order_date       |char(100)       |                |
