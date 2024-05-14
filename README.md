@@ -3,57 +3,63 @@
  
 在庫管理を円滑にするためのアプリです。
 
+# 作成経緯
+現在所属する職場では、使用する道具の管理を書類で行っており、生産計画表から導きす必要のある発注数、日々消費されていく在庫を把握するためにこのアプリを制作しました。
+
 # 使用技術
 Java 11  
 Spring Boot 3.0.5  
 MySQL 5.7.33
+
+# ER図
+![productcalculator - stocks](https://github.com/Masita770/ProductCalculator/assets/79049301/64038fe8-9463-43ee-a2c4-02f112efd42d)
  
-# Features
- 
-"hoge"のセールスポイントや差別化などを説明する
- 
+# テーブル定義
+## productsテーブル
+|列名             |データ型         |備考            | 
+|-----------------|----------------|----------------|
+|id               |int(11)         |Auto_increment  |
+|p_number         |varchar8256)    |                |
+|product          |varchar(256)    |                |
+|category         |varchar(100)    |                |
+|price            |varchar(256)    |                |
+|registration_date|timestamp       |                |
+|deleded_date     |timestamp       |                |
+
+## stocksテーブル
+|列名             |データ型         |備考            |
+|-----------------|----------------|----------------|
+|id               |int(11)         |Auto_increment  |
+|product_id       |int(11)         |                |
+|inventory        |char(100)       |                |
+|update_date      |timestamp       |                |
+
+
+
+## ordersテーブル
+|列名             |データ型         |備考            | 
+|-----------------|----------------|----------------|
+|id               |int(11)         |Auto_increment  |
+|stocks_id        |int(11)         |                |
+|orders_number    |int(11)         |                |
+|order_date       |char(100)       |                |
+|delivery_date    |date            |                |
+
+
 # Requirement
  
-"hoge"を動かすのに必要なライブラリなどを列挙する
- 
-* huga 3.5.2
-* hogehuga 1.0.2
+
  
 # Installation
  
-Requirementで列挙したライブラリなどのインストール方法を説明する
- 
-```bash
-pip install huga_package
-```
+
  
 # Usage
  
-DEMOの実行方法など、"hoge"の基本的な使い方を説明する
- 
-```bash
-git clone https://github.com/hoge/~
-cd examples
-python demo.py
-```
- 
+
 # Note
  
-注意点などがあれば書く
  
-# Author
+
+
  
-作成情報を列挙する
- 
-* 作成者
-* 所属
-* E-mail
- 
-# License
-ライセンスを明示する
- 
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
- 
-社内向けなら社外秘であることを明示してる
- 
-"hoge" is Confidential.
