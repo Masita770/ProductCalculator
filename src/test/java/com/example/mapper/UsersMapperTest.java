@@ -1,8 +1,7 @@
 package com.example.mapper;
 
 import com.example.domain.Products;
-import com.example.domain.Users;
-import com.example.service.UserService;
+import com.example.service.ProductService;
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.spring.api.DBRider;
 import org.apache.ibatis.annotations.Mapper;
@@ -28,11 +27,11 @@ import java.util.Optional;
 class UsersMapperTest {
 
     @InjectMocks
-    UserService service;
+    ProductService service;
 
 //    @Mock
     @Autowired
-    UserMapper mapper;
+ProductMapper mapper;
 //    List testUsers = List.of(
 //            new User(1L, "yamashita", "3344"));
 //    User user = new User(1L, "takahashi", "334532");
