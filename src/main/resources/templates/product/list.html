@@ -24,9 +24,7 @@
         <th id="price">価格</th>
         <th id="registrationDate">登録日</th>
         <th id="deletedDate">廃番日</th>
-        <th id="stockId">あ</th>
-        <th id="inventory">い</th>
-        <th id="updateDate">う</th>
+
 
     </tr>
     </thead>
@@ -47,16 +45,6 @@
         <th th:text="${product.registrationDate}"></th>
 
         <th th:text="${product.deletedDate}"></th>
-
-        <th th:text="${product.stockList.productId}"></th>
-
-<!--        <th th:text="${product.productId}"></th>-->
-
-<!--        <th th:text="${product.stockId}"></th>-->
-
-<!--        <th th:text="${product.inventory}"></th>-->
-
-<!--        <th th:text="${product.updateDate}"></th>-->
 
         <td><a class="btn btn-outline-primary btn-sm" th:href="@{orderManagement/{id}(id=${product.id})}">参照</a></td>
 
