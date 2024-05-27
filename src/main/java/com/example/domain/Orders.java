@@ -1,11 +1,12 @@
 package com.example.domain;
 
 
+import com.example.Form.DeliveryDate;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,6 +20,6 @@ public class Orders {
 
 
     private Timestamp orderDate;
-    @DateTimeFormat(pattern = "yyyy/MM/dd")
-    private Date deliveryDate;
+//    @DateTimeFormat(pattern = "yyyy/MM/dd")
+    private DeliveryDate deliveryDate;
 }
