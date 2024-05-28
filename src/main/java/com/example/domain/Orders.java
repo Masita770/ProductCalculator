@@ -20,6 +20,7 @@ public class Orders {
 
 
     private Timestamp orderDate;
-//    @DateTimeFormat(pattern = "yyyy/MM/dd")
+
+    @DateTimeFormat(pattern = "yyyy/MM/dd")
     private DeliveryDate deliveryDate;
 }
