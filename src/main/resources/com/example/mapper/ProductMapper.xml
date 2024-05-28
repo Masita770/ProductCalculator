@@ -19,7 +19,7 @@
 <!--        SELECT products.id, products.p_number, products.product, products.price, stocks.product_id, orders.stocks_id, orders.orders_number FROM products INNER JOIN stocks ON products.id = stocks.product_id-->
 <!--        INNER JOIN orders ON stocks.product_id = orders.stocks_id WHERE orders.stocks_id = #{stocksId}-->
     </select>
-    <insert id="add" useGeneratedKeys="true" keyProperty="id">
+    <insert id="requestAdd" useGeneratedKeys="true" keyProperty="id">
 <!--        INSERT into products (id, p_number, product, category, price) values (#{id}, #{pNumber}, #{category}, #{price})-->
         INSERT into orders(id, stocks_id, orders_number, order_date, delivery_date) values (#{id}, #{stocksId}, #{ordersNumber}, #{orderDate}, #{deliveryDate}
     </insert>

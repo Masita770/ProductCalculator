@@ -31,11 +31,11 @@ public class OrdersController {
     }
 
     @PostMapping("orderEdit")
-    public String add(@ModelAttribute Orders products, BindingResult bindingResult, Model model) {
+    public String add(@ModelAttribute Orders orders, BindingResult bindingResult, Model model) {
         if(bindingResult.hasErrors()) {
             return "product/orderError";
         }
-        orderService.createOrder(products);
+        orderService.createOrder(orders);
         return "redirect:orderEdit";
     }
 }
