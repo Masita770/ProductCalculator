@@ -2,12 +2,9 @@ package com.example.domain;
 
 import lombok.*;
 
-import com.example.domain.Stocks;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @AllArgsConstructor
