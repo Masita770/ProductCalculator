@@ -31,10 +31,6 @@ public class ProductService {
 
 
 
-    //Insert処理
-//    public void create(Orders products) {
-//        mapper.add(products);
-//    }
 
     //Update処理
     public void update(Products products) {
@@ -45,10 +41,5 @@ public class ProductService {
     public void delete(Products delete) {
         mapper.delete(delete);
     }
-
-
-//    public Users certificate(Integer id) {
-//        return mapper.certificate(id);
-//    }
 }
 
