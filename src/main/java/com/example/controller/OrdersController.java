@@ -30,4 +30,17 @@ public class OrdersController {
         orderService.createOrder(orders);
         return "redirect:orderEdit";
     }
+
+    @GetMapping("reception")
+    public String newTotal(@RequestBody(required = false) @ModelAttribute Orders orders) {
+        return "product/reception";
+    }
+
+//    @PostMapping("reception")
+//    public String total(@RequestParam("t") String t, Model model) {
+//        this. = t;
+//        model.addAttribute("t", t);
+//        model.addAttribute("o", "条件2");
+//        return "product/reception";
+//    }
 }
