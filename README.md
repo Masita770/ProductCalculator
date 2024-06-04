@@ -42,8 +42,8 @@ MySQL 5.7.33
 |id               |int(11)         |Auto_increment  |
 |stocks_id        |int(11)         |                |
 |orders_number    |int(11)         |                |
-|order_date       |char(100)       |                |
-|delivery_date    |date            |                |
+|order_date       |timestamp       |                |
+|delivery_date    |varchar(26)     |                |
 
 
 # Requirement
