@@ -22,8 +22,8 @@ CREATE TABLE IF NOT EXISTS orders(
     id int(11) NOT NULL AUTO_INCREMENT,
     stocks_id int(11) NOT NULL comment '在庫管理番号',
     orders_number char(100) NOT NULL comment '発注数',
-    order_date timestamp comment '発注日',
-    delivery_date date NOT NULL '引き渡し日',
+    order_date timestamp NOT NULL comment '発注日',
+    delivery_date varchar(26) NOT NULL '引き渡し日',
     PRIMARY KEY(id),
     FOREIGN KEY stocks_id
     REFERENCES stocks(id)

@@ -29,5 +29,8 @@ public interface ProductMapper {
 
 
     void delete(Products delete);
+
+
+    List<Orders> total();
 }
 
