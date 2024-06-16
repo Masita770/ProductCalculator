@@ -14,6 +14,8 @@ public interface ProductMapper {
     //@Select("SELECT * FROM products ")
     List<Products> selectAll();
 
+    List<Orders> orderSelect();
+
     List<Stocks> stockAll();
 
     //一件表示
