@@ -2,14 +2,16 @@ package com.example.service;
 
 
 import com.example.domain.Orders;
+import com.example.domain.Stocks;
 import com.example.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
+import java.sql.Array;
 import java.sql.Date;
-import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
+import java.util.stream.Stream;
 
 
 @Service
@@ -23,9 +25,13 @@ public class OrderService {
         mapper.requestAdd(orders);
     }
 
-    Scanner scanner = new Scanner(System.in);
-    String inputWords = scanner.next();
 
+    public Optional<Orders> getOrderId(Integer id) {
+        return mapper.orderId(id);
+    }
+    public void stocksUpdate(Stocks stocks) {
+        mapper.stocksUpdate(stocks);
+    }
 //    public void t() {
 //        TimerTask task = new TimerTask() {
 //            @Override
