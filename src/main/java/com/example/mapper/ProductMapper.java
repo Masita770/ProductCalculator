@@ -31,5 +31,9 @@ public interface ProductMapper {
 
 
     void delete(Products delete);
+
+
+    Optional<Orders> orderId(Integer id);
+    void stocksUpdate(Stocks stocks);
 }
 

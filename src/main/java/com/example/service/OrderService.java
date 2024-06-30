@@ -17,20 +17,24 @@ import java.util.stream.Stream;
 @Service
 public class OrderService {
 
-    @Autowired
-    ProductMapper mapper;
 
+    private ProductMapper productMapper;
+
+    @Autowired
+    public OrderService(ProductMapper productMapper) {
+        this.productMapper = productMapper;
+    }
 
     public void createOrder(Orders orders) {
-        mapper.requestAdd(orders);
+        productMapper.requestAdd(orders);
     }
 
 
     public Optional<Orders> getOrderId(Integer id) {
-        return mapper.orderId(id);
+        return productMapper.orderId(id);
     }
     public void stocksUpdate(Stocks stocks) {
-        mapper.stocksUpdate(stocks);
+        productMapper.stocksUpdate(stocks);
     }
 //    public void t() {
 //        TimerTask task = new TimerTask() {

@@ -17,14 +17,19 @@ import com.example.domain.Products;
 @RequestMapping("/product")
 public class ProductController {
 
+
+    private ProductService productService;
+
     @Autowired
-    ProductService service;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
 
 
     @RequestMapping("list")
     public String list(Model model) {
-        List<Products> products = service.getAll();
+        List<Products> products = productService.getAll();
         model.addAttribute("list", products);
         return "product/list";
     }
@@ -32,7 +37,7 @@ public class ProductController {
     // Read処理
     @GetMapping("orderManagement/{id}") //
     public String user(@PathVariable("id") Integer id, Model model) throws NotFoundException {
-        Optional<Products> product = service.getListOne(id);
+        Optional<Products> product = productService.getListOne(id);
         product.ifPresentOrElse(inside -> model.addAttribute("product", inside), () ->
                 model.addAttribute("product", product));
         return "product/orderManagement";
@@ -46,7 +51,7 @@ public class ProductController {
 
     @GetMapping("update/{id}")
     public String update(@PathVariable("id")Integer id, Model model) {
-        Optional<Products> userUpdate = service.getListOne(id);
+        Optional<Products> userUpdate = productService.getListOne(id);
         userUpdate.ifPresentOrElse(inside -> {
             model.addAttribute("userUpdate", inside);
         }, () -> {
@@ -59,20 +64,20 @@ public class ProductController {
     @RequestMapping("/edit/{id}")
     public String update(@PathVariable("id")Integer id, @ModelAttribute Products products) {
         products.setId(id);
-        service.update(products);
+        productService.update(products);
         return "product/edit";
     }
 
     @RequestMapping("deletePause/{id}")
     public String deleteOne(@PathVariable("id")Integer id, @ModelAttribute Products products, Model model) {
-        service.getListOne(id);
+        productService.getListOne(id);
         model.addAttribute("deleteDate", products);
         return "/product/deletePause";
     }
 
     @GetMapping("delete/{id}")
     public String delete(@ModelAttribute Products delete) {
-        service.delete(delete);
+        productService.delete(delete);
         return "product/delete";
     }
 }

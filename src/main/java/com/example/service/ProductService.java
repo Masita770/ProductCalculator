@@ -12,9 +12,13 @@ import com.example.mapper.ProductMapper;
 @Service
 public class ProductService {
 
-    @Autowired
-    ProductMapper mapper;
 
+    private ProductMapper mapper;
+
+    @Autowired
+    public ProductService(ProductMapper mapper) {
+        this.mapper = mapper;
+    }
 
     public List<Stocks> stockAll() {
         return mapper.stockAll();
@@ -28,6 +32,9 @@ public class ProductService {
     public Optional<Products> getListOne(Integer id) {
         return mapper.selectOne(id);
     }
+//    public void stockUpdate(Stocks stocks) {
+//        mapper.stocksUpdate(stocks);
+//    }
 
 
 
