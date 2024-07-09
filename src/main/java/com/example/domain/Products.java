@@ -21,4 +21,9 @@ public class Products {
     private LocalDate registrationDate;
     private Timestamp deletedDate;
     Stocks stockList;
+
+    // 7/10 コンストラクタを記述する
+    public Products(Integer id, String pNumber, String product, String category, String price, LocalDate registrationDate, Timestamp deletedDate) {
+        this.id = id;
+    }
 }
