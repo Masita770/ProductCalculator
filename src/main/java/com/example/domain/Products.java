@@ -25,5 +25,11 @@ public class Products {
     // 7/10 コンストラクタを記述する
     public Products(Integer id, String pNumber, String product, String category, String price, LocalDate registrationDate, Timestamp deletedDate) {
         this.id = id;
+        this.pNumber = pNumber;
+        this.product = product;
+        this.category = category;
+        this.price = price;
+        this.registrationDate = registrationDate;
+        this.deletedDate = deletedDate;
     }
 }
