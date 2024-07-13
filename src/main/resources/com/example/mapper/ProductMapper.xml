@@ -11,7 +11,7 @@
 <!--    <select id="selectAll" resultMap="stockMap">-->
     <select id="selectAll" resultMap="stockMap">
 <!--        SELECT * FROM products INNER JOIN stocks ON products.id = stocks.product_id-->
-        SELECT products.id, products.p_number, products.product, products.price, stocks.product_id FROM products  INNER JOIN stocks ON products.id = stocks.product_id
+        SELECT products.id, products.p_number, products.product, products.price, stocks.product_id, stocks.inventory FROM products  INNER JOIN stocks ON products.id = stocks.product_id
     </select>
 
     <select id="selectOne" resultMap="stockMap">
@@ -41,6 +41,23 @@
         INNER JOIN orders ON
             stocks.id = orders.stocks_id
     </select>
+
+
+    <select id="orderId" resultMap="stockMap">
+        SELECT products.id, orders.id, orders.stocks_id, orders.orders_number, orders.order_date, orders.delivery_date FROM products
+        INNER JOIN
+            stocks ON products.id = stocks.product_id
+        INNER JOIN orders ON
+            stocks.id = orders.stocks_id
+        WHERE orders.id = #{orders.id}
+    </select>
+<!--    <select id="orderId" resultMap="order">-->
+<!--        SELECT products.id, products.p_number, products.product, products.price, stocks.product_id FROM products INNER JOIN stocks ON products.id = stocks.product_id WHERE products.id = #{id}-->
+<!--    </select>-->
+    <update id="stocksUpdate">
+        UPDATE
+    </update>
+
 
     <resultMap type="com.example.domain.Products" id="stockMap">
         <id property="id" column="id" />

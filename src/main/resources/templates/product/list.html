@@ -20,10 +20,11 @@
         <th id="id">ID</th>
         <th id="pNumber">品番</th>
         <th id="product">製品</th>
-        <th id="category">カテゴリ</th>
+        <th id="category">分類</th>
         <th id="price">価格</th>
         <th id="registrationDate">登録日</th>
         <th id="deletedDate">廃番日</th>
+        <th id="inventory">在庫数</th>
 
 
     </tr>
@@ -45,6 +46,8 @@
         <th th:text="${product.registrationDate}"></th>
 
         <th th:text="${product.deletedDate}"></th>
+
+<!--        <th th:text="${product.inventory}"></th>-->
 
         <td><a class="btn btn-outline-primary btn-sm" th:href="@{orderManagement/{id}(id=${product.id})}">参照</a></td>
 
