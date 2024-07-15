@@ -36,7 +36,9 @@ public class ProductService {
 //        mapper.stocksUpdate(stocks);
 //    }
 
-
+    public void productInsert(Products products) {
+        mapper.productAdd(products);
+    }
 
 
     //Update処理
