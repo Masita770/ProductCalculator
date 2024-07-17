@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.service.ProductService;
@@ -41,6 +42,19 @@ public class ProductController {
         product.ifPresentOrElse(inside -> model.addAttribute("product", inside), () ->
                 model.addAttribute("product", product));
         return "product/orderManagement";
+    }
+
+    @GetMapping()
+    public String requestRegistration(@RequestBody(required = false) Products products) {
+        return "/";
+    }
+    @PostMapping()
+    public String productAdd(@ModelAttribute Products products, BindingResult bindingResult, Model model) {
+        if(bindingResult.hasErrors()) {
+            return "error";
+        }
+        productService.productInsert(products);
+        return "";
     }
 
 
