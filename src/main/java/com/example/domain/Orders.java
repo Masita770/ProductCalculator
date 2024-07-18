@@ -24,4 +24,10 @@ public class Orders {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String deliveryDate;
+
+    public Orders(Integer id, int stocksId, int ordersNumber) {
+        this.id = id;
+        this.stocksId = stocksId;
+        this.ordersNumber = ordersNumber;
+    }
 }
