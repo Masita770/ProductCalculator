@@ -10,11 +10,10 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-
 public class Stocks {
     private Integer id;
     private Integer productId;
-    private String inventory;
+    private int inventory;
     private Timestamp updateDate;
     Orders orderList;
 }
