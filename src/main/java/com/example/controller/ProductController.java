@@ -83,7 +83,7 @@ public class ProductController {
     }
 
     @RequestMapping("deletePause/{id}")
-    public String deleteOne(@PathVariable("id")Integer id, @ModelAttribute Products products, Model model) {
+    public String deleteOne(@PathVariable("id")int id, @ModelAttribute Products products, Model model) {
         productService.getListOne(id);
         model.addAttribute("deleteDate", products);
         return "/product/deletePause";
@@ -93,5 +93,13 @@ public class ProductController {
     public String delete(@ModelAttribute Products delete) {
         productService.delete(delete);
         return "product/delete";
+    }
+
+
+    @GetMapping("total/{id}")
+    public String totalProduct(@PathVariable("id") int id, @ModelAttribute Products products, Model model) {
+        List<Products> total = productService.totalOrder(id);
+        model.addAttribute("d", total);
+        return "/product/total";
     }
 }
