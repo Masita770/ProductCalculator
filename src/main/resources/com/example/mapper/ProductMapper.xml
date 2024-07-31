@@ -8,19 +8,14 @@
         SELECT * FROM stocks
     </select>
 
-<!--    <select id="selectAll" resultMap="stockMap">-->
     <select id="selectAll" resultMap="stockMap">
-<!--        SELECT * FROM products INNER JOIN stocks ON products.id = stocks.product_id-->
         SELECT products.id, products.p_number, products.product, products.price, stocks.product_id, stocks.inventory FROM products  INNER JOIN stocks ON products.id = stocks.product_id
     </select>
 
     <select id="selectOne" resultMap="stockMap">
         SELECT id, p_number, product, category, price, registration_date, deleted_date FROM products WHERE id = #{id}
-<!--        SELECT products.id, products.p_number, products.product, products.price, stocks.product_id, orders.stocks_id, orders.orders_number FROM products INNER JOIN stocks ON products.id = stocks.product_id-->
-<!--        INNER JOIN orders ON stocks.product_id = orders.stocks_id WHERE orders.stocks_id = #{stocksId}-->
     </select>
     <insert id="requestAdd" useGeneratedKeys="true" keyProperty="id">
-<!--        INSERT into products (id, p_number, product, category, price) values (#{id}, #{pNumber}, #{category}, #{price})-->
         INSERT into orders(id, stocks_id, orders_number, order_date, delivery_date) values (#{id}, #{stocksId}, #{ordersNumber}, #{orderDate}, #{deliveryDate})
     </insert>
     <update id="update">
@@ -29,17 +24,18 @@
     <delete id="delete">
         DELETE FROM products WHERE id = #{id}
     </delete>
-
-    <select id="orderAll" resultMap="stockMap">
+<!--7/22 orderAllをorderSelectに修正-->
+    <select id="orderSelect" resultMap="stockMap">
 <!--        SELECT * FROM products INNER JOIN -->
         SELECT
-            products.id, products.p_number, products.product, products.price, stocks.product_id,
-            orders.id, orders.stocks_id
+            products.id, products.p_number, products.product, products.price, stocks.id,
+            orders.id, orders.stocks_id, orders.orders_number
         FROM products
         INNER JOIN stocks ON
-            products.id = stocks.product_id
+            products.id = stocks.id
         INNER JOIN orders ON
             stocks.id = orders.stocks_id
+        AND products.id = #{id}
     </select>
 
 
