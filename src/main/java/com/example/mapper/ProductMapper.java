@@ -14,15 +14,17 @@ public interface ProductMapper {
     //@Select("SELECT * FROM products ")
     List<Products> selectAll();
 
-    List<Orders> orderSelect();
+    List<Products> orderSelect(int id);
 
     List<Stocks> stockAll();
 
     //一件表示
     //@Select("SELECT id, username, password FROM users WHERE id = #{id}")
-    Optional<Products> selectOne(Integer productId);
+    Optional<Products> selectOne(int id);
 
 
+
+    void productAdd(Products products);
 
     void requestAdd(Orders orders);
 
