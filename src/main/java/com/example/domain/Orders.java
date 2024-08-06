@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 @Data
 //
 public class Orders {
-    private Integer id;
+    private int id;
     private int stocksId;
     private int ordersNumber;
 
@@ -25,7 +25,7 @@ public class Orders {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private String deliveryDate;
 
-    public Orders(Integer id, int stocksId, int ordersNumber) {
+    public Orders(int id, int stocksId, int ordersNumber) {
         this.id = id;
         this.stocksId = stocksId;
         this.ordersNumber = ordersNumber;
