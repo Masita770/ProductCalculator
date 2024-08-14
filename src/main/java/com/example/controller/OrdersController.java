@@ -5,6 +5,8 @@ import com.example.domain.Orders;
 import com.example.domain.Products;
 import com.example.domain.Stocks;
 import com.example.service.OrderService;
+import com.example.service.ProductService;
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +22,14 @@ public class OrdersController {
 
 
     private OrderService orderService;
+    private ProductService productService;
 
     @Autowired
-    public OrdersController(OrderService orderService) {
+    public OrdersController(OrderService orderService, ProductService productService) {
         this.orderService = orderService;
+        this.productService = productService;
     }
+
 
     @GetMapping("orderManagement")
     public String newProducts(@RequestBody(required = false) @ModelAttribute Products products) {
@@ -46,28 +51,42 @@ public class OrdersController {
 //    }
 
 
-    @GetMapping("reception/{id}")
-    public String d(@PathVariable("id")int id, Model model) {
-        Optional<Orders> f = orderService.getOrderId(id);
-        model.addAttribute("d", f);
-        return "product/reception";
-    }
-
-//    @PostMapping("reception")
-//    public String total(@PathVariable("id") int orderId, @ModelAttribute Orders date, @ModelAttribute Stocks stocks, Model model) {
-//        // 製品を指定
-//        Optional<Orders> i = orderService.getOrderId(orderId);
-//        date.setId(orderId);
-//        orderService.stocksUpdate(stocks);
-//        // 発注データ 在庫データ 合計
-//        int sumF = Integer.parseInt(i.get().getDeliveryDate() + stocks.getInventory());
-//        // 上で合計したものを
-//        i.get().setDeliveryDate(date.getDeliveryDate());
-//        // 上で合計したものを在庫に格納
-//        stocks.setInventory(sumF);
-////        date.setDeliveryDate(stocks.getInventory());
-////        model.addAttribute("t", t);
-////        model.addAttribute("o", "条件2");
-//        return "redirect:product/reception";
+//    @GetMapping("reception/{id}")
+//    public String d(@PathVariable("id")int id, Model model) {
+//        Optional<Orders> f = orderService.getOrderId(id);
+//        model.addAttribute("d", f);
+//        return "product/reception";
 //    }
+
+
+    @GetMapping("recei/{id}")
+    public String selectReceiveStock(@PathVariable("id") int id, Model model) throws NotFoundException {
+        Optional<Products> selectProducts = productService.getListOne(id);
+        selectProducts.ifPresentOrElse(inside -> {
+//            int s = stocks.getInventory() + orders.getOrdersNumber();
+//            stocks.setInventory(s);
+            model.addAttribute("products", inside);
+        }, () -> {
+            System.out.println("存在しない");
+        });
+        return "product/recei";
+    }
+    @PostMapping("receiEdit")
+    public String receivingStock(@PathVariable("id") int id, @ModelAttribute Products product) {
+        product.setId(id);
+        orderService.receivingStock(product);
+//        int s = stocks.getInventory() + orders.getOrdersNumber();
+//        stocks.setInventory(s);
+        orderService.receivingStock(product);
+        return "redirect:product/receiEdit";
+        // 入庫数と注文数が等しければ、更新
+
+//        int s = orderService.receivingStock(product) + orders.getOrdersNumber();
+//        int s = orders.getStocksId() + order.getOrdersNumber();
+//        if(receive == orders.getOrdersNumber()) {
+
+//            }
+//        }
+
+    }
 }
