@@ -71,22 +71,10 @@ public class OrdersController {
         });
         return "product/recei";
     }
-    @PostMapping("receiEdit")
+    @RequestMapping("/receiEdit/{id}")
     public String receivingStock(@PathVariable("id") int id, @ModelAttribute Products product) {
         product.setId(id);
         orderService.receivingStock(product);
-//        int s = stocks.getInventory() + orders.getOrdersNumber();
-//        stocks.setInventory(s);
-        orderService.receivingStock(product);
-        return "redirect:product/receiEdit";
-        // 入庫数と注文数が等しければ、更新
-
-//        int s = orderService.receivingStock(product) + orders.getOrdersNumber();
-//        int s = orders.getStocksId() + order.getOrdersNumber();
-//        if(receive == orders.getOrdersNumber()) {
-
-//            }
-//        }
-
+        return "product/receiEdit";
     }
 }
