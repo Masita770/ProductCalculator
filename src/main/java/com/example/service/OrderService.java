@@ -2,6 +2,7 @@ package com.example.service;
 
 
 import com.example.domain.Orders;
+import com.example.domain.Products;
 import com.example.domain.Stocks;
 import com.example.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,11 @@ public class OrderService {
     }
 
 
-    public Optional<Orders> getOrderId(Integer id) {
-        return productMapper.orderId(id);
-    }
-    public void stocksUpdate(Stocks stocks) {
-        productMapper.stocksUpdate(stocks);
+//    public Optional<Products> getOrderId(Integer id) {
+//        return productMapper.orderId(id);
+//    }
+    public void receivingStock(Products products) {
+        productMapper.receivingStock(products);
     }
 //    public void t() {
 //        TimerTask task = new TimerTask() {
