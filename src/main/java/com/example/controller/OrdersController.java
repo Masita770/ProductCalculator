@@ -9,10 +9,12 @@ import com.example.service.ProductService;
 import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 //
@@ -59,12 +61,11 @@ public class OrdersController {
 //    }
 
 
+    @Transactional
     @GetMapping("recei/{id}")
-    public String selectReceiveStock(@PathVariable("id") int id, Model model) throws NotFoundException {
+    public String selectReceiveStock(@PathVariable("id") int id, Model model) {
         Optional<Products> selectProducts = productService.getListOne(id);
         selectProducts.ifPresentOrElse(inside -> {
-//            int s = stocks.getInventory() + orders.getOrdersNumber();
-//            stocks.setInventory(s);
             model.addAttribute("products", inside);
         }, () -> {
             System.out.println("存在しない");
@@ -72,8 +73,10 @@ public class OrdersController {
         return "product/recei";
     }
     @RequestMapping("/receiEdit/{id}")
-    public String receivingStock(@PathVariable("id") int id, @ModelAttribute Products product) {
+    public String receivingStock(@PathVariable("id") int id, @ModelAttribute Products product, Stocks stocks, Orders orders) {
         product.setId(id);
+//        stocks.setInventory(inventory);
+//        orders.setOrdersNumber(ordersNumber);
         orderService.receivingStock(product);
         return "product/receiEdit";
     }
