@@ -14,7 +14,7 @@ public interface ProductMapper {
     //@Select("SELECT * FROM products ")
     List<Products> selectAll();
 
-    List<Products> orderSelect(int id);
+    Optional<Products> orderSelect(int id);
 
     List<Stocks> stockAll();
 
@@ -35,7 +35,9 @@ public interface ProductMapper {
     void delete(Products delete);
 
 
-    Optional<Orders> orderId(Integer id);
+//    Optional<Products> orderId(Integer id);
     void stocksUpdate(Stocks stocks);
+
+    void receivingStock(Products products);
 }
 
